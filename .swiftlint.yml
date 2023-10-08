@@ -1,0 +1,181 @@
+# https://realm.github.io/SwiftLint/rule-directory.html
+
+only_rules:
+  - array_init
+  - attributes
+  - block_based_kvo
+  - capture_variable
+  - class_delegate_protocol
+  - closing_brace
+  - closure_spacing
+  - closure_end_indentation
+  - collection_alignment
+  - colon
+  - comma
+  - comment_spacing
+  - compiler_protocol_init
+  - computed_accessors_order
+  - conditional_returns_on_newline
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - control_statement
+  - custom_rules
+  - deployment_target
+  - discarded_notification_center_observer
+  - discouraged_assert
+  - discouraged_direct_init
+  - discouraged_object_literal
+  - duplicate_enum_cases
+  - duplicate_imports
+  - dynamic_inline
+  - empty_collection_literal
+  - empty_count
+  - empty_enum_arguments
+  - empty_parameters
+  - empty_parentheses_with_trailing_closure
+  - empty_string
+  - expiring_todo
+  - explicit_init
+  - fallthrough
+  - fatal_error_message
+  - file_header
+  - file_name_no_space
+  - first_where
+  - flatmap_over_map_reduce
+  - generic_type_name
+  - ibinspectable_in_extension
+  - identical_operands
+  - identifier_name
+  - implicit_getter
+  - implicit_return
+  - is_disjoint
+  - joined_default_parameter
+  - last_where
+  - leading_whitespace
+  - legacy_cggeometry_functions
+  - legacy_constant
+  - legacy_constructor
+  - legacy_hashing
+  - legacy_multiple
+  - legacy_nsgeometry_functions
+  - legacy_random
+  - line_length
+  - literal_expression_end_indentation
+  - lower_acl_than_parent
+  - mark
+  - modifier_order
+  - multiline_literal_brackets
+  - multiple_closures_with_trailing_closure
+  - nimble_operator
+  - no_extension_access_modifier
+  - no_space_in_method_call
+  - notification_center_detachment
+  - nslocalizedstring_key
+  - nslocalizedstring_require_bundle
+  - nsobject_prefer_isequal
+  - opening_brace
+  - operator_usage_whitespace
+  - operator_whitespace
+  - optional_enum_case_matching
+  - orphaned_doc_comment
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - prefer_nimble
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
+  - private_action
+  - private_outlet
+  - private_over_fileprivate
+  - private_subject
+  - private_unit_test
+  - prohibited_super_call
+  - protocol_property_accessors_order
+  - reduce_boolean
+  - reduce_into
+  - redundant_discardable_let
+  - redundant_nil_coalescing
+  - redundant_objc_attribute
+  - redundant_optional_initialization
+  - redundant_set_access_control
+  - redundant_string_enum_value
+  - redundant_type_annotation
+  - redundant_void_return
+  - required_enum_case
+  - return_arrow_whitespace
+  - shorthand_operator
+  - self_in_property_initialization
+  - single_test_class
+  - sorted_first_last
+  - sorted_imports
+  - statement_position
+  - static_operator
+  - switch_case_alignment
+  - syntactic_sugar
+  - test_case_accessibility
+  - toggle_bool
+  - trailing_comma
+  - trailing_newline
+  - trailing_semicolon
+  - trailing_whitespace
+  - unavailable_condition
+  - unneeded_break_in_switch
+  - unneeded_parentheses_in_closure_argument
+  - untyped_error_in_catch
+  - unused_closure_parameter
+  - unused_control_flow_label
+  - unused_declaration
+  - unused_enumerated
+  - unused_import
+  - unused_setter_value
+  - valid_ibinspectable
+  - vertical_parameter_alignment
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace
+  - void_return
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+
+identifier_name:
+  excluded:
+    - id
+    - of
+    - ok
+    - to
+    - !str on
+  allowed_symbols:
+    - _
+
+line_length: 120
+
+trailing_comma:
+  mandatory_comma: true
+
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  SWIFTLINT_CURRENT_FILENAME
+                    \/\/  .*
+                    \/\/
+                    \/\/  Created by .*? on \d{2}\.\d{2}\.\d{4}\.
+                    \/\/  Copyright © 20(?:22|23) orion-assigment. All rights reserved\.
+                    \/\/
+
+custom_rules:
+  empty_line_before_func:
+    included: ".*\\.swift"
+    name: "Empty line between func"
+    regex: '(?:((var|let) [^\r\n]+?)|\})\n[^\S\r\n]*(?:(@[^\r\n]+?(\n[^\S\r\n]*?)|))(?:((open|internal|private|fileprivate|public|override)\s)|)(?:(static\s+|))(func |init\(|deinit )'
+  cyrillic_chars_in_identifiers:
+    included: ".*\\.swift"
+    name: "Cyrillic chars in identifier"
+    regex: "[А-я]"
+    match_kinds: 
+      - identifier
+  mark_for_tests_and_helpers:
+    included: ".*Tests\\.swift"
+    name: "Marks for 'Tests' and 'Helpers' should end with ':'"
+    regex: 'MARK\:\s\-\s([Tt]ests|[Hh]elpers)$'
