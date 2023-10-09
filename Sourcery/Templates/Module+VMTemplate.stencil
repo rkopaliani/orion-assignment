@@ -1,0 +1,15 @@
+{% for type in types.implementing.AutoGeneratable %}
+import Combine
+
+extension {{ type.name }} {
+
+    struct ViewModel {
+
+        class Interface: ObservableObject {
+
+        } // Interface
+
+    } // ViewModel
+
+} // {{ type.name }}
+{% endfor %}

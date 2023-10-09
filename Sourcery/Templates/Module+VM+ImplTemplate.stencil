@@ -1,0 +1,52 @@
+{% for type in types.implementing.AutoGeneratable %}
+import Combine
+import OSLog
+
+import Swinject
+
+private let logger = Logger(category: "{{ type.name }}.VM")
+
+extension {{ type.name }}.ViewModel {
+
+    struct Factory {
+
+        static func register(with container: Container, scheduler: AnyScheduler) {
+
+            let threadSafeResolver = container.synchronize()
+
+            container.register(Interface.self) { _ in
+
+                Impl(resolver: threadSafeResolver, scheduler: scheduler)
+            }
+            .inObjectScope(.transient)
+        }
+    }
+
+    private final class Impl: Interface {
+
+        init(resolver: Resolver, scheduler: AnyScheduler) {
+
+            self.resolver = resolver
+            self.scheduler = scheduler
+
+            self.model = resolver.resolve(Model.Interface.self)!
+
+            // MARK: - Resolve dependencies here
+        }
+
+        // MARK: - Privates
+
+        private typealias Model = {{ type.name }}.Model
+        private typealias TextIds = {{ type.name }}.Assets.TextIds
+
+        private let resolver: Resolver
+        private let scheduler: AnyScheduler
+
+        private let model: Model.Interface
+
+        private var cancellables = Set<AnyCancellable>()
+
+    } // Impl
+
+} // {{ type.name }}.ViewModel
+{% endfor %}

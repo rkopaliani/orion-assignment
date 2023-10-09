@@ -1,0 +1,19 @@
+{% for type in types.implementing.AutoGeneratable %}
+extension {{ type.name }} {
+
+    struct Assets {
+
+        struct TextIds {
+
+        // MARK: List module specific text ids
+
+        } // TextIds
+
+        // MARK: Privates:
+
+        private static let prefix = "{{ type.name }}"
+
+    } // Assets
+
+} // {{ type.name }}
+{% endfor %}
