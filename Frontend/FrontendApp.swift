@@ -11,9 +11,21 @@ import Swinject
 
 @main
 struct FrontendApp: App {
+
+    init() {
+        registerDependencies()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Root.View(viewModel: Container.default.resolver.resolve(Root.ViewModel.Interface.self)!)
         }
     }
+}
+
+func registerDependencies() {
+    let defaultSyncPair = Container.default
+    let mainScheduler = DispatchQueue.main.asAnyScheduler()
+    Root.Model.Factory.register(with: defaultSyncPair.container)
+    Root.ViewModel.Factory.register(with: defaultSyncPair.container, scheduler: mainScheduler)
 }

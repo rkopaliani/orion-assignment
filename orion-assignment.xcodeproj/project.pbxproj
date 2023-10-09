@@ -115,13 +115,13 @@
 		5E8FDE672AD302F8003A69FC /* Frontend */ = {
 			isa = PBXGroup;
 			children = (
-				5EE3BF1B2AD4559B00F072F7 /* Root */,
 				5E8FDE712AD302FA003A69FC /* Frontend.entitlements */,
 				5E8FDE6A2AD302F8003A69FC /* ContentView.swift */,
 				5E8FDE682AD302F8003A69FC /* FrontendApp.swift */,
 				5E8FDE6C2AD302FA003A69FC /* Assets.xcassets */,
 				5EA4CCA62AD435A400BCEA38 /* Extensions */,
 				5EA4CCD52AD44BAF00BCEA38 /* Utilities */,
+				5EE3BF1B2AD4559B00F072F7 /* Root */,
 				5E8FDE6E2AD302FA003A69FC /* Preview Content */,
 			);
 			path = Frontend;
