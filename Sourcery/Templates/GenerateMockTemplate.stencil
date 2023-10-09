@@ -1,0 +1,98 @@
+{% for protocoltype in types.protocols %}
+{% for alias in types.typealiases %}
+{% if alias.typeName|replace:"","" == protocoltype.name|replace:"","" %}
+@testable import Frontend
+
+import Combine
+
+import CombineExt
+import EntwineTest
+
+extension {{ alias.parentName }} {
+
+    final class Mock: Interface {
+
+        public enum Calls: TestableSubscriber.Calls {
+
+{% for method in protocoltype.methods %}
+            case {{ method.shortName }}{% if method.parameters.count > 0 %}({% for param in method.parameters %}{{ param.typeName }}{% if param.name|replace:"","" != method.parameters.last.name|replace:"","" %}, {% endif %}{% endfor %}){% endif %}
+{% endfor %}
+        }
+        public var m_callSubscriber: TestableSubscriber<Calls, Never>
+
+        public var m_result: (
+
+{% for variable in protocoltype.variables %}
+            {{ variable.name }}: {{ variable.typeName|replace:"AnyPublisher","PassthroughSubject" }},
+{% endfor %}
+{% for method in protocoltype.methods %}
+{% if not method.returnTypeName|replace:"","" == "Void" or method.throws %}
+{% if method.throws %}
+            {{ method.shortName }}: Result<{{ method.returnTypeName }}, Error>,
+{% else %}
+            {{ method.shortName }}: {{ method.returnTypeName|replace:"AnyPublisher","CurrentValueSubject" }},
+{% endif %}
+{% endif %}
+{% endfor %}
+            ()
+        )
+
+        public init(_ testScheduler: TestScheduler) {
+
+            m_callSubscriber = testScheduler.createCallsTestableSubscriber(Calls.self)
+            m_callsRelay = CurrentValueRelay(nil)
+
+            m_callsRelay
+
+                .unwrap()
+                .subscribe(m_callSubscriber)
+
+{% for variable in protocoltype.variables %}
+            m_result.{{ variable.name }} = .init()
+{% endfor %}
+{% for method in protocoltype.methods %}
+{% if not method.returnTypeName|replace:"","" == "Void" or method.throws %}
+{% if not method.returnTypeName|replace:"AnyPublisher","" == method.returnTypeName|replace:"","" %}
+            m_result.{{ method.shortName }} = CurrentValueSubject(<#T##initialValue: _##_#>),
+{% else %}
+            m_result.{{ method.shortName }}:{% if method.throws %} .success(<#T##initialValue: _##_#>),{% else %} <#T##initialValue: _##_#>,{% endif %}
+{% endif %}
+{% endif %}
+{% endfor %}
+        }
+
+        // MARK: Interface
+
+{% for variable in protocoltype.variables %}
+        var {{ variable.name }}: {{ variable.typeName }} {
+
+            m_result.{{ variable.name }}.eraseToAnyPublisher()
+        }
+
+{% endfor %}
+{% for method in protocoltype.methods %}
+        func {{ method.name }}{% if method.throws %} throws {% endif %}{% if method.returnTypeName|replace:"","" != "Void" %}-> {{ method.returnTypeName }}{% endif %} {
+
+            m_callsRelay.accept(.{{ method.shortName }}{% if method.parameters.count > 0 %}({% for param in method.parameters %}{{ param.name }}{% if param.name|replace:"","" != method.parameters.last.name|replace:"","" %}, {% endif %}{% endfor %}){% endif %})
+{% if method.returnTypeName|replace:"","" != "Void" %}
+
+            return m_result.{{ method.shortName }}{% if method.throws %}.get(){% endif %}
+{% if method.returnTypeName|replace:"AnyPublisher","" != method.returnTypeName|replace:"","" %}
+
+                .ignoreOutput()
+                .eraseToAnyPublisher()
+{% endif %}
+{% endif %}
+        }
+
+{% endfor %}
+        // MARK: Private
+
+        private let m_callsRelay: CurrentValueRelay<Calls?>
+
+    } // Mock
+
+} // {{ alias.parentName }}
+{% endif %}
+{% endfor %}
+{% endfor %}

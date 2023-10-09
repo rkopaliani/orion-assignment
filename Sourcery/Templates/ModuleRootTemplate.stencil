@@ -1,0 +1,5 @@
+{% for type in types.implementing.AutoGeneratable %}
+struct {{ type.name }} {
+
+} // {{ type.name }}
+{% endfor %}

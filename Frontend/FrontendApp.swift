@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Swinject
 
 @main
 struct FrontendApp: App {

@@ -1,0 +1,15 @@
+{% for type in types.implementing.AutoGeneratable %}
+protocol {{ type.name }}_Model_Interface {
+
+} // {{ type.name }}_Model_Interface
+
+extension {{ type.name }} {
+
+    struct Model {
+
+        typealias Interface = {{ type.name }}_Model_Interface
+
+    } // Model
+
+} // {{ type.name }}
+{% endfor %}
