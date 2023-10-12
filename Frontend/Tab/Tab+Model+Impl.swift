@@ -1,8 +1,8 @@
 //
-//  Root+Model+Impl.swift
+//  Tab+Model+Impl.swift
 //  Frontend
 //
-//  Created by script on 09.10.2023.
+//  Created by script on 12.10.2023.
 //  Copyright © 2023 orion-assigment. All rights reserved.
 //
 
@@ -11,31 +11,30 @@ import OSLog
 
 import Swinject
 
-private let logger = Logger(category: "Root.Model")
+private let logger = Logger(category: "Tab.Model")
 
-extension Root.Model {
+extension Tab.Model {
 
     struct Factory {
 
-        static func register(with container: Container) {
+        static func register(with container: Container, scheduler: AnyScheduler) {
 
             let threadSafeResolver = container.synchronize()
 
             container.register(Interface.self) { _ in
 
-                Impl(resolver: threadSafeResolver)
+                Impl(resolver: threadSafeResolver, scheduler: scheduler)
             }
-            .inObjectScope(.container)
-
-            Window.Model.Factory.register(with: container)
+            .inObjectScope(.transient)
         }
     }
 
     private final class Impl: Interface {
 
-        init(resolver: Resolver) {
+        init(resolver: Resolver, scheduler: AnyScheduler) {
 
             self.resolver = resolver
+            self.scheduler = scheduler
 
             // MARK: - Resolve your dependencies here
 
@@ -46,9 +45,10 @@ extension Root.Model {
         // MARK: - Privates
 
         private let resolver: Resolver
+        private let scheduler: AnyScheduler
 
         private var subscriptions = Set<AnyCancellable>()
 
     } // Impl
 
-} // Root.Model
+} // Tab.Model

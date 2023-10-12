@@ -17,9 +17,8 @@ struct FrontendApp: App {
     }
 
     var body: some Scene {
-        WindowGroup {
-            Root.View(viewModel: Container.default.resolver.resolve(Root.ViewModel.Interface.self)!)
-        }
+        let viewModel = Container.default.resolver.resolve(Root.ViewModel.Interface.self)!
+        Root.View(viewModel: viewModel)
     }
 }
 

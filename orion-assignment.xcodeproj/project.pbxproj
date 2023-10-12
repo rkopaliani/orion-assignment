@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5E8FDE692AD302F8003A69FC /* FrontendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FDE682AD302F8003A69FC /* FrontendApp.swift */; };
-		5E8FDE6B2AD302F8003A69FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FDE6A2AD302F8003A69FC /* ContentView.swift */; };
 		5E8FDE6D2AD302FA003A69FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8FDE6C2AD302FA003A69FC /* Assets.xcassets */; };
 		5E8FDE702AD302FA003A69FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8FDE6F2AD302FA003A69FC /* Preview Assets.xcassets */; };
 		5E8FDE7B2AD302FB003A69FC /* FrontendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FDE7A2AD302FB003A69FC /* FrontendTests.swift */; };
@@ -27,6 +26,25 @@
 		5EA4CCDA2AD44BAF00BCEA38 /* Utilities+UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4CCD62AD44BAF00BCEA38 /* Utilities+UnfairLock.swift */; };
 		5EA4CCDB2AD44BAF00BCEA38 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4CCD72AD44BAF00BCEA38 /* Utilities.swift */; };
 		5EA4CCDD2AD44BAF00BCEA38 /* Utilities+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4CCD92AD44BAF00BCEA38 /* Utilities+Localization.swift */; };
+		5EB431AB2AD80C5F00643FB5 /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431AA2AD80C5F00643FB5 /* Controls.swift */; };
+		5EB431AD2AD80C6D00643FB5 /* Controls+WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431AC2AD80C6D00643FB5 /* Controls+WebView.swift */; };
+		5EB431B02AD80C7F00643FB5 /* Controls+WebView+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431AF2AD80C7F00643FB5 /* Controls+WebView+VM.swift */; };
+		5EB431B42AD80D0A00643FB5 /* Controls+WebView+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431B32AD80D0A00643FB5 /* Controls+WebView+View.swift */; };
+		5EB431BD2AD80EF500643FB5 /* Tab+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431B62AD80EF400643FB5 /* Tab+Assets.swift */; };
+		5EB431BE2AD80EF500643FB5 /* Tab+Model+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431B72AD80EF400643FB5 /* Tab+Model+Impl.swift */; };
+		5EB431BF2AD80EF500643FB5 /* Tab+VM+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431B82AD80EF400643FB5 /* Tab+VM+Impl.swift */; };
+		5EB431C02AD80EF500643FB5 /* Tab+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431B92AD80EF400643FB5 /* Tab+View.swift */; };
+		5EB431C12AD80EF500643FB5 /* Tab+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431BA2AD80EF400643FB5 /* Tab+VM.swift */; };
+		5EB431C22AD80EF500643FB5 /* Tab+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431BB2AD80EF400643FB5 /* Tab+Model.swift */; };
+		5EB431C32AD80EF500643FB5 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431BC2AD80EF400643FB5 /* Tab.swift */; };
+		5EB431C52AD80F7600643FB5 /* Controls+TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431C42AD80F7600643FB5 /* Controls+TabHeader.swift */; };
+		5EC322E52AD5705300820156 /* Window+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322DE2AD5705300820156 /* Window+VM.swift */; };
+		5EC322E62AD5705300820156 /* Window+Model+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322DF2AD5705300820156 /* Window+Model+Impl.swift */; };
+		5EC322E72AD5705300820156 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322E02AD5705300820156 /* Window.swift */; };
+		5EC322E82AD5705300820156 /* Window+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322E12AD5705300820156 /* Window+Assets.swift */; };
+		5EC322E92AD5705300820156 /* Window+VM+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322E22AD5705300820156 /* Window+VM+Impl.swift */; };
+		5EC322EA2AD5705300820156 /* Window+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322E32AD5705300820156 /* Window+Model.swift */; };
+		5EC322EB2AD5705300820156 /* Window+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322E42AD5705300820156 /* Window+View.swift */; };
 		5EE3BF232AD4559B00F072F7 /* Root+Model+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3BF1C2AD4559B00F072F7 /* Root+Model+Impl.swift */; };
 		5EE3BF242AD4559B00F072F7 /* Root+VM+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3BF1D2AD4559B00F072F7 /* Root+VM+Impl.swift */; };
 		5EE3BF252AD4559B00F072F7 /* Root+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3BF1E2AD4559B00F072F7 /* Root+Assets.swift */; };
@@ -56,7 +74,6 @@
 /* Begin PBXFileReference section */
 		5E8FDE662AD302F8003A69FC /* Frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8FDE682AD302F8003A69FC /* FrontendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontendApp.swift; sourceTree = "<group>"; };
-		5E8FDE6A2AD302F8003A69FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5E8FDE6C2AD302FA003A69FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E8FDE6F2AD302FA003A69FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5E8FDE712AD302FA003A69FC /* Frontend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Frontend.entitlements; sourceTree = "<group>"; };
@@ -76,6 +93,25 @@
 		5EA4CCD62AD44BAF00BCEA38 /* Utilities+UnfairLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utilities+UnfairLock.swift"; sourceTree = "<group>"; };
 		5EA4CCD72AD44BAF00BCEA38 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		5EA4CCD92AD44BAF00BCEA38 /* Utilities+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Utilities+Localization.swift"; sourceTree = "<group>"; };
+		5EB431AA2AD80C5F00643FB5 /* Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controls.swift; sourceTree = "<group>"; };
+		5EB431AC2AD80C6D00643FB5 /* Controls+WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+WebView.swift"; sourceTree = "<group>"; };
+		5EB431AF2AD80C7F00643FB5 /* Controls+WebView+VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+WebView+VM.swift"; sourceTree = "<group>"; };
+		5EB431B32AD80D0A00643FB5 /* Controls+WebView+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+WebView+View.swift"; sourceTree = "<group>"; };
+		5EB431B62AD80EF400643FB5 /* Tab+Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+Assets.swift"; sourceTree = "<group>"; };
+		5EB431B72AD80EF400643FB5 /* Tab+Model+Impl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+Model+Impl.swift"; sourceTree = "<group>"; };
+		5EB431B82AD80EF400643FB5 /* Tab+VM+Impl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+VM+Impl.swift"; sourceTree = "<group>"; };
+		5EB431B92AD80EF400643FB5 /* Tab+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+View.swift"; sourceTree = "<group>"; };
+		5EB431BA2AD80EF400643FB5 /* Tab+VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+VM.swift"; sourceTree = "<group>"; };
+		5EB431BB2AD80EF400643FB5 /* Tab+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+Model.swift"; sourceTree = "<group>"; };
+		5EB431BC2AD80EF400643FB5 /* Tab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		5EB431C42AD80F7600643FB5 /* Controls+TabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+TabHeader.swift"; sourceTree = "<group>"; };
+		5EC322DE2AD5705300820156 /* Window+VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+VM.swift"; sourceTree = "<group>"; };
+		5EC322DF2AD5705300820156 /* Window+Model+Impl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+Model+Impl.swift"; sourceTree = "<group>"; };
+		5EC322E02AD5705300820156 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		5EC322E12AD5705300820156 /* Window+Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+Assets.swift"; sourceTree = "<group>"; };
+		5EC322E22AD5705300820156 /* Window+VM+Impl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+VM+Impl.swift"; sourceTree = "<group>"; };
+		5EC322E32AD5705300820156 /* Window+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+Model.swift"; sourceTree = "<group>"; };
+		5EC322E42AD5705300820156 /* Window+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+View.swift"; sourceTree = "<group>"; };
 		5EE3BF1C2AD4559B00F072F7 /* Root+Model+Impl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Root+Model+Impl.swift"; sourceTree = "<group>"; };
 		5EE3BF1D2AD4559B00F072F7 /* Root+VM+Impl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Root+VM+Impl.swift"; sourceTree = "<group>"; };
 		5EE3BF1E2AD4559B00F072F7 /* Root+Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Root+Assets.swift"; sourceTree = "<group>"; };
@@ -116,13 +152,15 @@
 			isa = PBXGroup;
 			children = (
 				5E8FDE712AD302FA003A69FC /* Frontend.entitlements */,
-				5E8FDE6A2AD302F8003A69FC /* ContentView.swift */,
 				5E8FDE682AD302F8003A69FC /* FrontendApp.swift */,
 				5E8FDE6C2AD302FA003A69FC /* Assets.xcassets */,
+				5EB431A92AD80C4F00643FB5 /* Controls */,
 				5EA4CCA62AD435A400BCEA38 /* Extensions */,
-				5EA4CCD52AD44BAF00BCEA38 /* Utilities */,
-				5EE3BF1B2AD4559B00F072F7 /* Root */,
 				5E8FDE6E2AD302FA003A69FC /* Preview Content */,
+				5EE3BF1B2AD4559B00F072F7 /* Root */,
+				5EB431B52AD80EF400643FB5 /* Tab */,
+				5EA4CCD52AD44BAF00BCEA38 /* Utilities */,
+				5EC322DD2AD5705300820156 /* Window */,
 			);
 			path = Frontend;
 			sourceTree = "<group>";
@@ -221,16 +259,72 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		5EB431A92AD80C4F00643FB5 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				5EB431AA2AD80C5F00643FB5 /* Controls.swift */,
+				5EB431C62AD80F7A00643FB5 /* TabHeader */,
+				5EB431AE2AD80C7100643FB5 /* WebView */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		5EB431AE2AD80C7100643FB5 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				5EB431AC2AD80C6D00643FB5 /* Controls+WebView.swift */,
+				5EB431AF2AD80C7F00643FB5 /* Controls+WebView+VM.swift */,
+				5EB431B32AD80D0A00643FB5 /* Controls+WebView+View.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		5EB431B52AD80EF400643FB5 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				5EB431BC2AD80EF400643FB5 /* Tab.swift */,
+				5EB431B62AD80EF400643FB5 /* Tab+Assets.swift */,
+				5EB431BB2AD80EF400643FB5 /* Tab+Model.swift */,
+				5EB431B72AD80EF400643FB5 /* Tab+Model+Impl.swift */,
+				5EB431B92AD80EF400643FB5 /* Tab+View.swift */,
+				5EB431BA2AD80EF400643FB5 /* Tab+VM.swift */,
+				5EB431B82AD80EF400643FB5 /* Tab+VM+Impl.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		5EB431C62AD80F7A00643FB5 /* TabHeader */ = {
+			isa = PBXGroup;
+			children = (
+				5EB431C42AD80F7600643FB5 /* Controls+TabHeader.swift */,
+			);
+			path = TabHeader;
+			sourceTree = "<group>";
+		};
+		5EC322DD2AD5705300820156 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				5EC322E02AD5705300820156 /* Window.swift */,
+				5EC322E12AD5705300820156 /* Window+Assets.swift */,
+				5EC322E32AD5705300820156 /* Window+Model.swift */,
+				5EC322DF2AD5705300820156 /* Window+Model+Impl.swift */,
+				5EC322E42AD5705300820156 /* Window+View.swift */,
+				5EC322DE2AD5705300820156 /* Window+VM.swift */,
+				5EC322E22AD5705300820156 /* Window+VM+Impl.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
 		5EE3BF1B2AD4559B00F072F7 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				5EE3BF1C2AD4559B00F072F7 /* Root+Model+Impl.swift */,
-				5EE3BF1D2AD4559B00F072F7 /* Root+VM+Impl.swift */,
-				5EE3BF1E2AD4559B00F072F7 /* Root+Assets.swift */,
 				5EE3BF1F2AD4559B00F072F7 /* Root.swift */,
-				5EE3BF202AD4559B00F072F7 /* Root+VM.swift */,
+				5EE3BF1E2AD4559B00F072F7 /* Root+Assets.swift */,
 				5EE3BF212AD4559B00F072F7 /* Root+Model.swift */,
+				5EE3BF1C2AD4559B00F072F7 /* Root+Model+Impl.swift */,
 				5EE3BF222AD4559B00F072F7 /* Root+View.swift */,
+				5EE3BF202AD4559B00F072F7 /* Root+VM.swift */,
+				5EE3BF1D2AD4559B00F072F7 /* Root+VM+Impl.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -398,25 +492,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EE3BF292AD4559B00F072F7 /* Root+View.swift in Sources */,
+				5EB431BD2AD80EF500643FB5 /* Tab+Assets.swift in Sources */,
 				5EA4CCC42AD435A400BCEA38 /* Publishers+Timer.swift in Sources */,
 				5EA4CCDD2AD44BAF00BCEA38 /* Utilities+Localization.swift in Sources */,
 				5EA4CCC12AD435A400BCEA38 /* Combine+AnyScheduler.swift in Sources */,
+				5EB431B42AD80D0A00643FB5 /* Controls+WebView+View.swift in Sources */,
+				5EC322E52AD5705300820156 /* Window+VM.swift in Sources */,
+				5EB431B02AD80C7F00643FB5 /* Controls+WebView+VM.swift in Sources */,
 				5EA4CCC62AD435A400BCEA38 /* Logger+Auxiliary.swift in Sources */,
-				5E8FDE6B2AD302F8003A69FC /* ContentView.swift in Sources */,
+				5EB431BF2AD80EF500643FB5 /* Tab+VM+Impl.swift in Sources */,
 				5EE3BF242AD4559B00F072F7 /* Root+VM+Impl.swift in Sources */,
+				5EC322E62AD5705300820156 /* Window+Model+Impl.swift in Sources */,
 				5EE3BF232AD4559B00F072F7 /* Root+Model+Impl.swift in Sources */,
+				5EB431C32AD80EF500643FB5 /* Tab.swift in Sources */,
 				5E8FDE692AD302F8003A69FC /* FrontendApp.swift in Sources */,
+				5EB431C02AD80EF500643FB5 /* Tab+View.swift in Sources */,
+				5EC322E82AD5705300820156 /* Window+Assets.swift in Sources */,
 				5EE3BF272AD4559B00F072F7 /* Root+VM.swift in Sources */,
+				5EB431C22AD80EF500643FB5 /* Tab+Model.swift in Sources */,
 				5EA4CCC22AD435A400BCEA38 /* Combine+Publisher+Auxiliary.swift in Sources */,
+				5EB431AD2AD80C6D00643FB5 /* Controls+WebView.swift in Sources */,
 				5EE3BF282AD4559B00F072F7 /* Root+Model.swift in Sources */,
+				5EC322EA2AD5705300820156 /* Window+Model.swift in Sources */,
 				5EA4CCCC2AD435A400BCEA38 /* SwiftUI+PreviewProvider.swift in Sources */,
 				5EA4CCC32AD435A400BCEA38 /* Scheduler+Extension.swift in Sources */,
 				5EA4CCC02AD435A400BCEA38 /* Optionals+Auxiliary.swift in Sources */,
+				5EB431C52AD80F7600643FB5 /* Controls+TabHeader.swift in Sources */,
+				5EC322EB2AD5705300820156 /* Window+View.swift in Sources */,
 				5EE3BF262AD4559B00F072F7 /* Root.swift in Sources */,
+				5EC322E92AD5705300820156 /* Window+VM+Impl.swift in Sources */,
 				5EA4CCDB2AD44BAF00BCEA38 /* Utilities.swift in Sources */,
+				5EB431AB2AD80C5F00643FB5 /* Controls.swift in Sources */,
 				5EA4CCDA2AD44BAF00BCEA38 /* Utilities+UnfairLock.swift in Sources */,
+				5EB431C12AD80EF500643FB5 /* Tab+VM.swift in Sources */,
 				5EE3BF252AD4559B00F072F7 /* Root+Assets.swift in Sources */,
 				5EA4CCCA2AD435A400BCEA38 /* Swinject+Auxiliary.swift in Sources */,
+				5EC322E72AD5705300820156 /* Window.swift in Sources */,
+				5EB431BE2AD80EF500643FB5 /* Tab+Model+Impl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +589,7 @@
 					"@executable_path/../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rkopaliani.Frontend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,7 +624,7 @@
 					"@executable_path/../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rkopaliani.Frontend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -535,7 +647,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rkopaliani.FrontendTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -559,7 +671,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rkopaliani.FrontendTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -581,7 +693,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rkopaliani.FrontendUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -604,7 +716,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rkopaliani.FrontendUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -664,7 +776,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -718,7 +830,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

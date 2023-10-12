@@ -86,17 +86,20 @@ extension Utilities {
 
                 // Main priority is language code, then language script, and finally the region.
 
-                guard thisLocale.languageCode == otherLocale.languageCode else {
+                guard let thisId = thisLocale.language.languageCode?.identifier,
+                      let otherId = otherLocale.language.languageCode?.identifier,
+                      thisId == otherId else {
 
                     return false
                 }
 
-                if let thisScriptCode = thisLocale.scriptCode, thisScriptCode != otherLocale.scriptCode {
+                if let thisScriptCode = thisLocale.language.script?.identifier,
+                    thisScriptCode != otherLocale.language.script?.identifier {
 
                     return false
                 }
 
-                if let thisRegion = thisLocale.regionCode, thisRegion != otherLocale.regionCode {
+                if let thisRegion = thisLocale.region?.identifier, thisRegion != otherLocale.region?.identifier {
 
                     return false
                 }

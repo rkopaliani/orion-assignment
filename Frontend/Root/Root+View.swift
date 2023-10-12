@@ -9,68 +9,21 @@
 import Combine
 import SwiftUI
 
-import Swinject
-
 extension Root {
 
-    struct View: SwiftUI.View {
+    struct View: Scene {
 
         @ObservedObject var viewModel: ViewModel.Interface
 
-        var body: some SwiftUI.View {
+        var body: some Scene {
 
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
+            WindowGroup {
+                Window.View(viewModel: viewModel.windowVM)
             }
-            .padding()
+            .windowStyle(.hiddenTitleBar)
 
         } // body
 
     } // View
 
 } // Root
-
-#if DEBUG
-
-struct Root_Preview_Provider: PreviewProvider {
-
-    static var previews: some SwiftUI.View {
-
-        View(viewModel: staticContext.viewModel)
-    }
-
-    private typealias View = Root.View
-    private typealias ViewModel = Root.ViewModel
-
-    private final class Context: ObservableObject {
-
-        let viewModel: ViewModel.Interface
-
-        init(diPair: Container.SyncPair) {
-
-            self.viewModel = diPair.container.resolve(ViewModel.Interface.self)!
-        }
-
-    } // Context
-
-    private static var staticContext: Context = {
-
-        initializeLogging()
-
-        let diPair = Container.default
-
-        ViewModel.Factory.register(
-
-            with: diPair.container,
-            scheduler: DispatchQueue.main.asAnyScheduler()
-        )
-
-        return .init(diPair: diPair)
-    }()
-
-} // Root_Preview_Provider
-
-#endif

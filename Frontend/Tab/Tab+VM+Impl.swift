@@ -1,8 +1,8 @@
 //
-//  Root+VM+Impl.swift
+//  Tab+VM+Impl.swift
 //  Frontend
 //
-//  Created by script on 09.10.2023.
+//  Created by script on 12.10.2023.
 //  Copyright © 2023 orion-assigment. All rights reserved.
 //
 
@@ -11,9 +11,9 @@ import OSLog
 
 import Swinject
 
-private let logger = Logger(category: "Root.VM")
+private let logger = Logger(category: "Tab.VM")
 
-extension Root.ViewModel {
+extension Tab.ViewModel {
 
     struct Factory {
 
@@ -25,10 +25,7 @@ extension Root.ViewModel {
 
                 Impl(resolver: threadSafeResolver, scheduler: scheduler)
             }
-            // we need only one `Root` view model
-            .inObjectScope(.container)
-
-            Window.ViewModel.Factory.register(with: container, scheduler: scheduler)
+            .inObjectScope(.transient)
         }
     }
 
@@ -41,16 +38,13 @@ extension Root.ViewModel {
 
             self.model = resolver.resolve(Model.Interface.self)!
 
-            super.init(
-
-                windowVM: resolver.resolve(Window.ViewModel.Interface.self)!
-            )
+            // MARK: - Resolve dependencies here
         }
 
         // MARK: - Privates
 
-        private typealias Model = Root.Model
-        private typealias TextIds = Root.Assets.TextIds
+        private typealias Model = Tab.Model
+        private typealias TextIds = Tab.Assets.TextIds
 
         private let resolver: Resolver
         private let scheduler: AnyScheduler
@@ -61,4 +55,4 @@ extension Root.ViewModel {
 
     } // Impl
 
-} // Root.ViewModel
+} // Tab.ViewModel

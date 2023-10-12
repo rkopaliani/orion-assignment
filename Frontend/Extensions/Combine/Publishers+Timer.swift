@@ -85,7 +85,7 @@ extension Publishers {
 
         // MARK: Publisher
 
-        public func receive<S: Subscriber>(subscriber: S) where Failure == S.Failure, Output == S.Input {
+        public func receive<T: Subscriber>(subscriber: T) where Failure == T.Failure, Output == T.Input {
 
             routingSubscription.addSubscriber(subscriber)
         }
@@ -159,7 +159,7 @@ extension Publishers {
 
             var combineIdentifier: CombineIdentifier { inner.combineIdentifier }
 
-            func addSubscriber<S: Subscriber>(_ sub: S) where S.Failure == Failure, S.Input == Output {
+            func addSubscriber<T: Subscriber>(_ sub: T) where T.Failure == Failure, T.Input == Output {
 
                 lock.lock()
                 subscribers.append(AnySubscriber(sub))

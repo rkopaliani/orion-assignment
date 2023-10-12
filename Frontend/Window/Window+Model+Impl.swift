@@ -1,8 +1,8 @@
 //
-//  Root+Model+Impl.swift
+//  Window+Model+Impl.swift
 //  Frontend
 //
-//  Created by script on 09.10.2023.
+//  Created by script on 10.10.2023.
 //  Copyright © 2023 orion-assigment. All rights reserved.
 //
 
@@ -11,9 +11,9 @@ import OSLog
 
 import Swinject
 
-private let logger = Logger(category: "Root.Model")
+private let logger = Logger(category: "Window.Model")
 
-extension Root.Model {
+extension Window.Model {
 
     struct Factory {
 
@@ -25,9 +25,7 @@ extension Root.Model {
 
                 Impl(resolver: threadSafeResolver)
             }
-            .inObjectScope(.container)
-
-            Window.Model.Factory.register(with: container)
+            .inObjectScope(.transient)
         }
     }
 
@@ -38,7 +36,6 @@ extension Root.Model {
             self.resolver = resolver
 
             // MARK: - Resolve your dependencies here
-
         }
 
         // MARK: - Interface
@@ -51,4 +48,4 @@ extension Root.Model {
 
     } // Impl
 
-} // Root.Model
+} // Window.Model
