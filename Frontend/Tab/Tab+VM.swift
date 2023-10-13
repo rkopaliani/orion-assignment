@@ -12,7 +12,13 @@ extension Tab {
 
     struct ViewModel {
 
-        class Interface: ObservableObject {
+        class Interface: ObservableObject, Identifiable {
+
+            let webViewVM: Controls.WebView.ViewModel.Interface
+
+            init(webViewVM: Controls.WebView.ViewModel.Interface) {
+                self.webViewVM = webViewVM
+            }
 
         } // Interface
 

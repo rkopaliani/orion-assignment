@@ -15,6 +15,10 @@
 		5E8FDE872AD302FB003A69FC /* FrontendUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FDE862AD302FB003A69FC /* FrontendUITestsLaunchTests.swift */; };
 		5E8FDE942AD3038C003A69FC /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5E8FDE932AD3038C003A69FC /* Swinject */; };
 		5E8FDE962AD3038C003A69FC /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 5E8FDE952AD3038C003A69FC /* CombineExt */; };
+		5E94C4712AD82A1D007017A9 /* Controls+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E94C46D2AD82A1D007017A9 /* Controls+Button.swift */; };
+		5E94C4722AD82A1D007017A9 /* Controls+Button+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E94C46E2AD82A1D007017A9 /* Controls+Button+Assets.swift */; };
+		5E94C4732AD82A1D007017A9 /* Controls+Button+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E94C46F2AD82A1D007017A9 /* Controls+Button+VM.swift */; };
+		5E94C4742AD82A1D007017A9 /* Controls+Button+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E94C4702AD82A1D007017A9 /* Controls+Button+View.swift */; };
 		5EA4CCC02AD435A400BCEA38 /* Optionals+Auxiliary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4CCA72AD435A400BCEA38 /* Optionals+Auxiliary.swift */; };
 		5EA4CCC12AD435A400BCEA38 /* Combine+AnyScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4CCA92AD435A400BCEA38 /* Combine+AnyScheduler.swift */; };
 		5EA4CCC22AD435A400BCEA38 /* Combine+Publisher+Auxiliary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4CCAA2AD435A400BCEA38 /* Combine+Publisher+Auxiliary.swift */; };
@@ -38,6 +42,7 @@
 		5EB431C22AD80EF500643FB5 /* Tab+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431BB2AD80EF400643FB5 /* Tab+Model.swift */; };
 		5EB431C32AD80EF500643FB5 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431BC2AD80EF400643FB5 /* Tab.swift */; };
 		5EB431C52AD80F7600643FB5 /* Controls+TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431C42AD80F7600643FB5 /* Controls+TabHeader.swift */; };
+		5EB431CB2AD812A800643FB5 /* Controls+WebView+View+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431CA2AD812A800643FB5 /* Controls+WebView+View+Impl.swift */; };
 		5EC322E52AD5705300820156 /* Window+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322DE2AD5705300820156 /* Window+VM.swift */; };
 		5EC322E62AD5705300820156 /* Window+Model+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322DF2AD5705300820156 /* Window+Model+Impl.swift */; };
 		5EC322E72AD5705300820156 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322E02AD5705300820156 /* Window.swift */; };
@@ -82,6 +87,10 @@
 		5E8FDE802AD302FB003A69FC /* FrontendUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrontendUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8FDE842AD302FB003A69FC /* FrontendUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontendUITests.swift; sourceTree = "<group>"; };
 		5E8FDE862AD302FB003A69FC /* FrontendUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontendUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5E94C46D2AD82A1D007017A9 /* Controls+Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Controls+Button.swift"; sourceTree = "<group>"; };
+		5E94C46E2AD82A1D007017A9 /* Controls+Button+Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Controls+Button+Assets.swift"; sourceTree = "<group>"; };
+		5E94C46F2AD82A1D007017A9 /* Controls+Button+VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Controls+Button+VM.swift"; sourceTree = "<group>"; };
+		5E94C4702AD82A1D007017A9 /* Controls+Button+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Controls+Button+View.swift"; sourceTree = "<group>"; };
 		5EA4CCA72AD435A400BCEA38 /* Optionals+Auxiliary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optionals+Auxiliary.swift"; sourceTree = "<group>"; };
 		5EA4CCA92AD435A400BCEA38 /* Combine+AnyScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+AnyScheduler.swift"; sourceTree = "<group>"; };
 		5EA4CCAA2AD435A400BCEA38 /* Combine+Publisher+Auxiliary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+Publisher+Auxiliary.swift"; sourceTree = "<group>"; };
@@ -105,6 +114,7 @@
 		5EB431BB2AD80EF400643FB5 /* Tab+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+Model.swift"; sourceTree = "<group>"; };
 		5EB431BC2AD80EF400643FB5 /* Tab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		5EB431C42AD80F7600643FB5 /* Controls+TabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+TabHeader.swift"; sourceTree = "<group>"; };
+		5EB431CA2AD812A800643FB5 /* Controls+WebView+View+Impl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+WebView+View+Impl.swift"; sourceTree = "<group>"; };
 		5EC322DE2AD5705300820156 /* Window+VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+VM.swift"; sourceTree = "<group>"; };
 		5EC322DF2AD5705300820156 /* Window+Model+Impl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+Model+Impl.swift"; sourceTree = "<group>"; };
 		5EC322E02AD5705300820156 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
@@ -197,6 +207,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5E94C4692AD829BE007017A9 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				5E94C46D2AD82A1D007017A9 /* Controls+Button.swift */,
+				5E94C46E2AD82A1D007017A9 /* Controls+Button+Assets.swift */,
+				5E94C4702AD82A1D007017A9 /* Controls+Button+View.swift */,
+				5E94C46F2AD82A1D007017A9 /* Controls+Button+VM.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		5EA3BEA92AD2F059003A831D = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				5EB431AA2AD80C5F00643FB5 /* Controls.swift */,
+				5E94C4692AD829BE007017A9 /* Button */,
 				5EB431C62AD80F7A00643FB5 /* TabHeader */,
 				5EB431AE2AD80C7100643FB5 /* WebView */,
 			);
@@ -275,6 +297,7 @@
 				5EB431AC2AD80C6D00643FB5 /* Controls+WebView.swift */,
 				5EB431AF2AD80C7F00643FB5 /* Controls+WebView+VM.swift */,
 				5EB431B32AD80D0A00643FB5 /* Controls+WebView+View.swift */,
+				5EB431CA2AD812A800643FB5 /* Controls+WebView+View+Impl.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -500,7 +523,10 @@
 				5EC322E52AD5705300820156 /* Window+VM.swift in Sources */,
 				5EB431B02AD80C7F00643FB5 /* Controls+WebView+VM.swift in Sources */,
 				5EA4CCC62AD435A400BCEA38 /* Logger+Auxiliary.swift in Sources */,
+				5EB431CB2AD812A800643FB5 /* Controls+WebView+View+Impl.swift in Sources */,
+				5E94C4742AD82A1D007017A9 /* Controls+Button+View.swift in Sources */,
 				5EB431BF2AD80EF500643FB5 /* Tab+VM+Impl.swift in Sources */,
+				5E94C4722AD82A1D007017A9 /* Controls+Button+Assets.swift in Sources */,
 				5EE3BF242AD4559B00F072F7 /* Root+VM+Impl.swift in Sources */,
 				5EC322E62AD5705300820156 /* Window+Model+Impl.swift in Sources */,
 				5EE3BF232AD4559B00F072F7 /* Root+Model+Impl.swift in Sources */,
@@ -525,7 +551,9 @@
 				5EB431AB2AD80C5F00643FB5 /* Controls.swift in Sources */,
 				5EA4CCDA2AD44BAF00BCEA38 /* Utilities+UnfairLock.swift in Sources */,
 				5EB431C12AD80EF500643FB5 /* Tab+VM.swift in Sources */,
+				5E94C4712AD82A1D007017A9 /* Controls+Button.swift in Sources */,
 				5EE3BF252AD4559B00F072F7 /* Root+Assets.swift in Sources */,
+				5E94C4732AD82A1D007017A9 /* Controls+Button+VM.swift in Sources */,
 				5EA4CCCA2AD435A400BCEA38 /* Swinject+Auxiliary.swift in Sources */,
 				5EC322E72AD5705300820156 /* Window.swift in Sources */,
 				5EB431BE2AD80EF500643FB5 /* Tab+Model+Impl.swift in Sources */,
@@ -572,6 +600,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Frontend/Frontend.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -607,6 +636,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Frontend/Frontend.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

@@ -26,6 +26,8 @@ extension Window.Model {
                 Impl(resolver: threadSafeResolver)
             }
             .inObjectScope(.transient)
+
+            Tab.Model.Factory.register(with: container)
         }
     }
 

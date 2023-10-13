@@ -6,4 +6,7 @@
 //  Copyright © 2023 orion-assigment. All rights reserved.
 //
 
-import Foundation
+extension Controls {
+
+    struct WebView {}
+}

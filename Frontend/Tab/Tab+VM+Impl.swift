@@ -38,7 +38,12 @@ extension Tab.ViewModel {
 
             self.model = resolver.resolve(Model.Interface.self)!
 
-            // MARK: - Resolve dependencies here
+            super.init(
+
+                webViewVM: Controls.WebView.ViewModel.Impl { _ in
+
+                }
+            )
         }
 
         // MARK: - Privates

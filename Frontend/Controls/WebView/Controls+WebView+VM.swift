@@ -6,6 +6,33 @@
 //  Copyright © 2023 orion-assigment. All rights reserved.
 //
 
-extension Controls {
+import SwiftUI
 
+extension Controls.WebView {
+
+    struct ViewModel {
+
+        class Interface: ObservableObject {
+
+            @Published var url: URL?
+            @Published var estimatedProgress: Double = 0
+
+            init() {
+            }
+        }
+
+        // MARK: -
+
+        final class Impl: Interface {
+
+            init(configure: (Interface) -> Void = { _ in }) {
+
+                super.init()
+
+                configure(self)
+            }
+
+        } // Impl
+
+    } // ViewModel
 }

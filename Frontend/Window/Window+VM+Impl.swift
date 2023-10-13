@@ -26,6 +26,8 @@ extension Window.ViewModel {
                 Impl(resolver: threadSafeResolver, scheduler: scheduler)
             }
             .inObjectScope(.transient)
+
+            Tab.ViewModel.Factory.register(with: container, scheduler: scheduler)
         }
     }
 
@@ -38,7 +40,44 @@ extension Window.ViewModel {
 
             self.model = resolver.resolve(Model.Interface.self)!
 
-            // MARK: - Resolve dependencies here
+            super.init(
+
+                goBackButton: Controls.Button.ViewModel.Impl {
+
+                    $0.kind = .systemIcon
+                    $0.icon = "chevron.backward"
+                },
+                shieldButtonVM: Controls.Button.ViewModel.Impl {
+
+                    $0.kind = .systemIcon
+                    $0.icon = "shield.lefthalf.filled"
+                },
+                goForwardButton: Controls.Button.ViewModel.Impl {
+
+                    $0.kind = .systemIcon
+                    $0.icon = "chevron.forward"
+                },
+                newPageButtonVM: Controls.Button.ViewModel.Impl {
+
+                    $0.kind = .systemIcon
+                    $0.icon = "plus"
+                },
+                overviewButtonVM: Controls.Button.ViewModel.Impl {
+
+                    $0.kind = .systemIcon
+                    $0.icon = "square.grid.2x2"
+                },
+                preferencesButtonVM: Controls.Button.ViewModel.Impl {
+                    $0.kind = .systemIcon
+                    $0.icon = "gear"
+                }
+            )
+
+            preferencesButtonVM.action = { [weak self] in
+
+                let tabsViewModel = resolver.resolve(Tab.ViewModel.Interface.self)!
+                self?.tabVMs.append(tabsViewModel)
+            }
         }
 
         // MARK: - Privates

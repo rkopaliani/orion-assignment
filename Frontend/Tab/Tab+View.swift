@@ -21,6 +21,8 @@ extension Tab {
 
             VStack {
 
+                Controls.WebView.View(viewModel: viewModel.webViewVM)
+
             } // VStack
 
         } // body
@@ -32,6 +34,8 @@ extension Tab {
 #if DEBUG
 
 struct Tab_Preview_Provider: PreviewProvider {
+
+    typealias Model = Tab.Model
 
     static var previews: some SwiftUI.View {
 
@@ -57,11 +61,12 @@ struct Tab_Preview_Provider: PreviewProvider {
         initializeLogging()
 
         let diPair = Container.default
+        let scheduler = DispatchQueue.main.asAnyScheduler()
 
+        Model.Factory.register(with: diPair.container)
         ViewModel.Factory.register(
-
             with: diPair.container,
-            scheduler: DispatchQueue.main.asAnyScheduler()
+            scheduler: scheduler
         )
 
         return .init(diPair: diPair)

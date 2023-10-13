@@ -17,13 +17,13 @@ extension Tab.Model {
 
     struct Factory {
 
-        static func register(with container: Container, scheduler: AnyScheduler) {
+        static func register(with container: Container) {
 
             let threadSafeResolver = container.synchronize()
 
             container.register(Interface.self) { _ in
 
-                Impl(resolver: threadSafeResolver, scheduler: scheduler)
+                Impl(resolver: threadSafeResolver)
             }
             .inObjectScope(.transient)
         }
@@ -31,10 +31,9 @@ extension Tab.Model {
 
     private final class Impl: Interface {
 
-        init(resolver: Resolver, scheduler: AnyScheduler) {
+        init(resolver: Resolver) {
 
             self.resolver = resolver
-            self.scheduler = scheduler
 
             // MARK: - Resolve your dependencies here
 
@@ -45,7 +44,6 @@ extension Tab.Model {
         // MARK: - Privates
 
         private let resolver: Resolver
-        private let scheduler: AnyScheduler
 
         private var subscriptions = Set<AnyCancellable>()
 

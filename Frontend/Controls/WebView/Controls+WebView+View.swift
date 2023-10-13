@@ -8,12 +8,20 @@
 
 import SwiftUI
 
-struct Controls_WebView_View: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+extension Controls.WebView {
 
-#Preview {
-    Controls_WebView_View()
+    struct View: SwiftUI.View {
+
+        let viewModel: ViewModel.Interface
+
+        init(viewModel: ViewModel.Interface) {
+
+            self.viewModel = viewModel
+        }
+
+        var body: some SwiftUI.View {
+
+            Impl(viewModel: viewModel)
+        }
+    }
 }
