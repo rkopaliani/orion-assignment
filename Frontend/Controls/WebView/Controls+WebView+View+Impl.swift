@@ -43,10 +43,8 @@ extension Controls.WebView.View {
     final class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
 
         let webView = WKWebView()
-        let viewModel: ViewModel.Interface
 
         init(viewModel: ViewModel.Interface) {
-            self.viewModel = viewModel
 
             webView.publisher(for: \.estimatedProgress)
 
@@ -60,7 +58,32 @@ extension Controls.WebView.View {
                 .weakAssign(to: \.url, on: viewModel)
                 .store(in: &cancellables)
 
-            webView.load(.init(url: .init(string: "https://apple.com")!))
+            webView.publisher(for: \.canGoBack)
+
+                .receive(on: scheduler)
+                .weakAssign(to: \.canGoBack, on: viewModel)
+                .store(in: &cancellables)
+
+            webView.publisher(for: \.canGoForward)
+
+                .receive(on: scheduler)
+                .weakAssign(to: \.canGoForward, on: viewModel)
+                .store(in: &cancellables)
+
+            super.init()
+
+            viewModel.onGoBackAction = { [weak self] in
+
+                self?.webView.goBack()
+            }
+            viewModel.onGoForwardAction = { [weak self] in
+
+                self?.webView.goForward()
+            }
+            viewModel.onLoadURL = { [weak self] url in
+
+                self?.webView.load(.init(url: url))
+            }
         }
 
         // MARK: - Private

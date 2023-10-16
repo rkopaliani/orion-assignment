@@ -41,9 +41,29 @@ extension Tab.ViewModel {
             super.init(
 
                 webViewVM: Controls.WebView.ViewModel.Impl { _ in
-
                 }
             )
+
+            webViewVM.$canGoBack
+
+                .removeDuplicates()
+                .receive(on: scheduler)
+                .weakAssign(to: \.canGoBack, on: self)
+                .store(in: &cancellables)
+
+            webViewVM.$canGoForward
+
+                .removeDuplicates()
+                .receive(on: scheduler)
+                .weakAssign(to: \.canGoForward, on: self)
+                .store(in: &cancellables)
+
+            webViewVM.$url
+
+                .removeDuplicates()
+                .receive(on: scheduler)
+                .weakAssign(to: \.url, on: self)
+                .store(in: &cancellables)
         }
 
         // MARK: - Privates

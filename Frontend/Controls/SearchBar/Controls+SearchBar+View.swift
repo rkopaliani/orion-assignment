@@ -31,6 +31,7 @@ extension Controls.SearchBar {
                     prompt: Text(viewModel.prompt)
                 )
                 .textFieldStyle(.plain)
+                .font(.callout)
                 .onSubmit {
 
                     viewModel.onCommitAction?()

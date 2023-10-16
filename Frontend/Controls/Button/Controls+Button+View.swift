@@ -40,6 +40,7 @@ extension Controls.Button {
                     action: { viewModel.action?() },
                     label: { Text(viewModel.label) }
                 )
+                .disabled(viewModel.isDisabled)
 
             case .systemIcon:
 
@@ -49,6 +50,7 @@ extension Controls.Button {
                     label: { Image(systemName: viewModel.icon) }
                 )
                 .buttonStyle(.borderless)
+                .disabled(viewModel.isDisabled)
             }
 
         } // body

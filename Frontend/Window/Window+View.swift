@@ -55,10 +55,14 @@ extension Window {
                 ToolbarItemGroup {
 
                     HStack(spacing: 16) {
+
                         Divider()
 
-                        Text(viewModel.tabsCountText)
-                            .font(.headline)
+                        Text(
+
+                            viewModel.tabsCountText
+                        )
+                        .font(.headline)
 
                         Controls.Button.View(viewModel: viewModel.goBackButton)
                         Controls.Button.View(viewModel: viewModel.goForwardButton)
@@ -67,6 +71,7 @@ extension Window {
                     Spacer()
 
                     HStack(spacing: 12) {
+
                         Controls.Button.View(viewModel: viewModel.shieldButtonVM)
                         Controls.Button.View(viewModel: viewModel.preferencesButtonVM)
                     }
@@ -87,6 +92,7 @@ extension Window {
                     Spacer()
 
                     HStack {
+
                         Controls.Button.View(viewModel: viewModel.newPageButtonVM)
                         Controls.Button.View(viewModel: viewModel.overviewButtonVM)
                     }

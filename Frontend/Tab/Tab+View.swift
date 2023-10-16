@@ -19,11 +19,24 @@ extension Tab {
 
         var body: some SwiftUI.View {
 
-            VStack {
+            ZStack {
 
                 Controls.WebView.View(viewModel: viewModel.webViewVM)
 
-            } // VStack
+                if viewModel.url == nil {
+
+                    LinearGradient(
+
+                        colors: [.gray, .blue],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+
+                    Text("Empty Tab")
+
+                        .font(.largeTitle)
+                }
+            }
 
         } // body
 

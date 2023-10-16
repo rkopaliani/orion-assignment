@@ -15,10 +15,9 @@ extension Window {
 
         class Interface: ObservableObject, Identifiable {
 
-            @Published var searchText: String = "http://facebook.com"
-            @Published var tabsCountText: String = "6 Tabs"
+            @Published var selectedIdx: Int?
+            @Published var tabsCountText: String = ""
             @Published var tabVMs: [Tab.ViewModel.Interface] = []
-            @Published var selectedIdx: Int = 0
 
             let goBackButton: Controls.Button.ViewModel.Interface
             let searchBarVM: Controls.SearchBar.ViewModel.Interface
