@@ -12,17 +12,17 @@ extension Container {
 
     /// Defines synchronized pair of DI container and its resolver.
     ///
-    public struct SyncPair {
+     struct SyncPair {
 
         /// Gets container for DI registrations.
         ///
-        public let container = Container()
+         let container = Container()
 
         /// Gets synchronized (thread safe) DI resolver for the container.
         ///
-        public let resolver: Resolver
+         let resolver: Resolver
 
-        public init() {
+         init() {
 
             self.resolver = container.synchronize()
         }
@@ -31,6 +31,6 @@ extension Container {
 
     /// Gets shared (global) pair of DI container and its synchronized (thread safe) resolver.
     ///
-    public static let `default` = SyncPair()
+     static let `default` = SyncPair()
 
 } // Container

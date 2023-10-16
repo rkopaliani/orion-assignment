@@ -28,7 +28,7 @@ extension Optional {
     /// Note! There are specifications for some wrapped types,
     /// like for `Date` and `StringProtocol`.
     ///
-    public func description(nil none: String = "nil") -> String {
+    func description(nil none: String = "nil") -> String {
 
         switch self {
         case .none: return none
@@ -55,7 +55,7 @@ extension Optional where Wrapped: StringProtocol {
     /// print("\(text.description())")          // → 'Foo Bar'
     /// ```
     ///
-    public func description(nil none: String = "nil") -> String {
+    func description(nil none: String = "nil") -> String {
 
         switch self {
         case .none: return none
@@ -82,7 +82,7 @@ extension Optional where Wrapped == Date {
     /// print("\(date.description())")          // → '2021-12-13 06:47:56 +0000'
     /// ```
     ///
-    public func description(nil none: String = "nil") -> String {
+    func description(nil none: String = "nil") -> String {
 
         switch self {
         case .none: return none
@@ -102,7 +102,7 @@ extension Optional where Wrapped: CustomDebugStringConvertible {
     /// ```
     /// struct Test: CustomDebugStringConvertible {
     ///
-    ///     var debugDescription: String { "foo bar" }
+    ///    var debugDescription: String { "foo bar" }
     /// }
     /// var value: Test?
     ///
@@ -113,7 +113,7 @@ extension Optional where Wrapped: CustomDebugStringConvertible {
     /// print("\(value.description())")         // → foo bar
     /// ```
     ///
-    public func debugDescription(nil none: String = "nil") -> String {
+    func debugDescription(nil none: String = "nil") -> String {
 
         switch self {
         case .none: return none

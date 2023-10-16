@@ -15,7 +15,7 @@ extension Controls.Button {
         @ObservedObject var viewModel: ViewModel.Interface
 
         @Environment(\.colorScheme)
-            var colorScheme
+        var colorScheme
 
         private var content: (() -> AnyView)?
 
@@ -48,7 +48,7 @@ extension Controls.Button {
                     action: { viewModel.action?() },
                     label: { Image(systemName: viewModel.icon) }
                 )
-                .tint(.primary)
+                .buttonStyle(.borderless)
             }
 
         } // body

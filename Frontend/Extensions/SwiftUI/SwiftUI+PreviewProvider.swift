@@ -18,7 +18,7 @@ private let logger = Logger(category: "SwiftUI.PreviewProvider", subsystem: "com
 
 extension PreviewProvider {
 
-    public static func initializeLogging() {
+    static func initializeLogging() {
 
         logger.info(
             """

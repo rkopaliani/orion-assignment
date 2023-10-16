@@ -20,7 +20,10 @@ extension Root {
             WindowGroup {
                 Window.View(viewModel: viewModel.windowVM)
             }
-            .windowStyle(.hiddenTitleBar)
+            .windowToolbarStyle(.unified(showsTitle: false))
+            .commands {
+                ToolbarCommands()
+            }
 
         } // body
 

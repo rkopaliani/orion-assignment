@@ -46,13 +46,13 @@ extension Utilities {
 
     open class Localization: Utilities_Localization_Interface {
 
-        public typealias Interface = Utilities_Localization_Interface
+        typealias Interface = Utilities_Localization_Interface
 
         /// Defines list of possible application languages.
         ///
         /// Format of case values should correspond to a `Locale` identifier.
         ///
-        public enum Language: String, Codable, CustomStringConvertible, CaseIterable {
+        enum Language: String, Codable, CustomStringConvertible, CaseIterable {
 
             // MARK: -
 
@@ -61,14 +61,14 @@ extension Utilities {
 
             // MARK: -
 
-            public var locale: Locale {
+            var locale: Locale {
 
                 Locale(identifier: rawValue)
             }
 
             // MARK: - CustomStringConvertible
 
-            public var description: String {
+            var description: String {
 
                 "'\(rawValue)'"
             }
@@ -94,7 +94,7 @@ extension Utilities {
                 }
 
                 if let thisScriptCode = thisLocale.language.script?.identifier,
-                    thisScriptCode != otherLocale.language.script?.identifier {
+                   thisScriptCode != otherLocale.language.script?.identifier {
 
                     return false
                 }
@@ -109,7 +109,7 @@ extension Utilities {
 
         } // Language
 
-        public init(with bundle: Bundle, stringsTableName: String? = nil) {
+        init(with bundle: Bundle, stringsTableName: String? = nil) {
 
             self.bundle = bundle
             self.stringsTableName = stringsTableName
@@ -119,11 +119,11 @@ extension Utilities {
 
         // MARK: - Interface
 
-        public private(set) var currentLanguage = Language.english
+        private(set)var currentLanguage = Language.english
 
-        public var doubleLengthPseudolanguage = false
+        var doubleLengthPseudolanguage = false
 
-        public func setUpAppLanguage(desired desiredLocale: Locale?) {
+        func setUpAppLanguage(desired desiredLocale: Locale?) {
 
             logger.trace("Setting up app language (desired=\(desiredLocale.description())...")
 
@@ -190,7 +190,7 @@ extension Utilities {
             logger.debug("App languages are '\(appLangIds)'.")
         }
 
-        public subscript(_ key: String) -> String {
+        subscript(_ key: String) -> String {
 
             guard !key.isEmpty else {
 

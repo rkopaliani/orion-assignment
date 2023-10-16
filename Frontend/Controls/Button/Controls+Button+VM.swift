@@ -11,41 +11,41 @@ import SwiftUI
 
 extension Controls.Button {
 
-    public struct ViewModel {
+    struct ViewModel {
 
-        public class Interface: ObservableObject {
+        class Interface: ObservableObject {
 
             /// The action to perform when the user triggers the button.
             ///
-            public var action: (() -> Void)?
+            var action: (() -> Void)?
 
             /// Optional button tag.
             ///
-            public var tag: Int?
+            var tag: Int?
 
             /// Optional accessibility identifier of the button.
             ///
-            public var accessibilityId: String?
+            var accessibilityId: String?
 
             /// Kind of the button.
             ///
-            public var kind: Kind = .plain
+            var kind: Kind = .plain
 
             /// Holds label of a button.
             ///
-            @Published public var label = ""
+            @Published var label = ""
 
             /// Holds button's icon name.
             ///
-            @Published public var icon = ""
+            @Published var icon = ""
 
             /// Allows to disable this button.
             ///
-            @Published public var isDisabled = false
+            @Published var isDisabled = false
 
             /// Indicates selection state of the button.
             ///
-            @Published public var isSelected = false
+            @Published var isSelected = false
 
             init() {
             }
@@ -54,9 +54,9 @@ extension Controls.Button {
 
         // MARK: -
 
-        public final class Impl: Interface {
+        final class Impl: Interface {
 
-            public init(configure: (Interface) -> Void = { _ in }) {
+            init(configure: (Interface) -> Void = { _ in }) {
 
                 super.init()
 

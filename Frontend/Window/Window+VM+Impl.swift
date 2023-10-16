@@ -47,6 +47,10 @@ extension Window.ViewModel {
                     $0.kind = .systemIcon
                     $0.icon = "chevron.backward"
                 },
+                searchBarVM: Controls.SearchBar.ViewModel.Impl {
+
+                    $0.title = "Search or enter website name"
+                },
                 shieldButtonVM: Controls.Button.ViewModel.Impl {
 
                     $0.kind = .systemIcon
@@ -77,6 +81,16 @@ extension Window.ViewModel {
 
                 let tabsViewModel = resolver.resolve(Tab.ViewModel.Interface.self)!
                 self?.tabVMs.append(tabsViewModel)
+            }
+            searchBarVM.onCommitAction = { [weak self] in
+
+                guard let self else {
+                    return
+                }
+                guard let url = URL(string: self.searchBarVM.urlText), let currentTab = self.tabVMs.first else {
+                    return
+                }
+                currentTab.webViewVM.url = url
             }
         }
 

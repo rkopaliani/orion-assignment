@@ -12,7 +12,7 @@ import OSLog
 private let logger = Logger(category: "AnyScheduler")
 
 extension Scheduler {
-    public func asAnyScheduler () -> AnyScheduler {.init(self) }
+    func asAnyScheduler () -> AnyScheduler {.init(self) }
 }
 
 /// A type-erasing scheduler.
@@ -28,12 +28,12 @@ extension Scheduler {
 ///     // DON'T DO THIS!
 ///     time1.distance(to: time2) // Will crash.
 ///
-public final class AnyScheduler: Scheduler {
+final class AnyScheduler: Scheduler {
 
-    public typealias SchedulerOptions = Never
-    public typealias SchedulerTimeType = AnySchedulerTimeType
+    typealias SchedulerOptions = Never
+    typealias SchedulerTimeType = AnySchedulerTimeType
 
-    public init<S: Scheduler>(_ scheduler: S, options: S.SchedulerOptions? = nil) {
+    init<S: Scheduler>(_ scheduler: S, options: S.SchedulerOptions? = nil) {
 
         wrappedNow = {
 
@@ -74,16 +74,16 @@ public final class AnyScheduler: Scheduler {
 
     // MARK: - Interface
 
-    public var now: SchedulerTimeType { wrappedNow() }
+    var now: SchedulerTimeType { wrappedNow() }
 
-    public var minimumTolerance: SchedulerTimeType.Stride { wrappedMinimumTolerance() }
+    var minimumTolerance: SchedulerTimeType.Stride { wrappedMinimumTolerance() }
 
-    public func schedule(options: SchedulerOptions?, _ action: @escaping () -> Void) {
+    func schedule(options: SchedulerOptions?, _ action: @escaping () -> Void) {
 
         wrappedScheduleAction(action)
     }
 
-    public func schedule(
+    func schedule(
 
         after date: SchedulerTimeType,
         tolerance: SchedulerTimeType.Stride,
@@ -95,7 +95,7 @@ public final class AnyScheduler: Scheduler {
         wrappedScheduleAfterToleranceAction(date, tolerance, action)
     }
 
-    public func schedule(
+    func schedule(
 
         after date: SchedulerTimeType,
         interval: SchedulerTimeType.Stride,
@@ -131,16 +131,16 @@ public final class AnyScheduler: Scheduler {
     ) -> Cancellable
 }
 
-public struct AnySchedulerTimeType: Strideable {
+struct AnySchedulerTimeType: Strideable {
 
-    public struct Stride: Comparable, SignedNumeric, SchedulerTimeIntervalConvertible {
+    struct Stride: Comparable, SignedNumeric, SchedulerTimeIntervalConvertible {
 
-        public init(integerLiteral value: Int) {
+        init(integerLiteral value: Int) {
 
             wrapped = .literal(.seconds(value))
         }
 
-        public init?<T: BinaryInteger>(exactly source: T) {
+        init?<T: BinaryInteger>(exactly source: T) {
 
             guard let literal = Int(exactly: source) else {
 
@@ -150,13 +150,13 @@ public struct AnySchedulerTimeType: Strideable {
             self.init(integerLiteral: literal)
         }
 
-        public var magnitude: Stride {
+        var magnitude: Stride {
 
             // TODO: magnitude?
             fatalError("Not implemented.")
         }
 
-        public static func == (lhs: Stride, rhs: Stride) -> Bool {
+        static func == (lhs: Stride, rhs: Stride) -> Bool {
 
             switch (lhs.wrapped, rhs.wrapped) {
 
@@ -179,7 +179,7 @@ public struct AnySchedulerTimeType: Strideable {
             }
         }
 
-        public static func < (lhs: Stride, rhs: Stride) -> Bool {
+        static func < (lhs: Stride, rhs: Stride) -> Bool {
 
             switch (lhs.wrapped, rhs.wrapped) {
 
@@ -191,7 +191,7 @@ public struct AnySchedulerTimeType: Strideable {
 
                 return left.lessThan(
 
-                   left.makeOpaque(right).wrapped
+                    left.makeOpaque(right).wrapped
                 )
 
             case let (.literal(left), .opaque(right)):
@@ -204,7 +204,7 @@ public struct AnySchedulerTimeType: Strideable {
             }
         }
 
-        public static func + (lhs: Stride, rhs: Stride) -> Stride {
+        static func + (lhs: Stride, rhs: Stride) -> Stride {
 
             switch (lhs.wrapped, rhs.wrapped) {
 
@@ -212,21 +212,21 @@ public struct AnySchedulerTimeType: Strideable {
 
                 return .init(.opaque(
 
-                   left.add(right.wrapped)
+                    left.add(right.wrapped)
                 ))
 
             case let (.opaque(left), .literal(right)):
 
                 return .init(.opaque(
 
-                   left.add(left.makeOpaque(right).wrapped)
+                    left.add(left.makeOpaque(right).wrapped)
                 ))
 
             case let (.literal(left), .opaque(right)):
 
                 return .init(.opaque(
 
-                   right.makeOpaque(left).add(right.wrapped)
+                    right.makeOpaque(left).add(right.wrapped)
                 ))
 
             case let (.literal(left), .literal(right)):
@@ -235,7 +235,7 @@ public struct AnySchedulerTimeType: Strideable {
             }
         }
 
-        public static func - (lhs: Stride, rhs: Stride) -> Stride {
+        static func - (lhs: Stride, rhs: Stride) -> Stride {
 
             switch (lhs.wrapped, rhs.wrapped) {
 
@@ -266,7 +266,7 @@ public struct AnySchedulerTimeType: Strideable {
             }
         }
 
-        public static func * (lhs: Stride, rhs: Stride) -> Stride {
+        static func * (lhs: Stride, rhs: Stride) -> Stride {
 
             switch (lhs.wrapped, rhs.wrapped) {
 
@@ -297,42 +297,42 @@ public struct AnySchedulerTimeType: Strideable {
             }
         }
 
-        public static func += (lhs: inout Stride, rhs: Stride) {
+        static func += (lhs: inout Stride, rhs: Stride) {
 
             lhs = (lhs + rhs)
         }
 
-        public static func -= (lhs: inout Stride, rhs: Stride) {
+        static func -= (lhs: inout Stride, rhs: Stride) {
 
             lhs = (lhs - rhs)
         }
 
-        public static func *= (lhs: inout Stride, rhs: Stride) {
+        static func *= (lhs: inout Stride, rhs: Stride) {
 
             lhs = (lhs * rhs)
         }
 
-        public static func seconds(_ seconds: Double) -> Stride {
+        static func seconds(_ seconds: Double) -> Stride {
 
             .init(.literal(.interval(seconds)))
         }
 
-        public static func seconds(_ seconds: Int) -> Stride {
+        static func seconds(_ seconds: Int) -> Stride {
 
             .init(.literal(.seconds(seconds)))
         }
 
-        public static func milliseconds(_ milliSeconds: Int) -> Stride {
+        static func milliseconds(_ milliSeconds: Int) -> Stride {
 
             .init(.literal(.milliseconds(milliSeconds)))
         }
 
-        public static func microseconds(_ microSeconds: Int) -> Stride {
+        static func microseconds(_ microSeconds: Int) -> Stride {
 
             .init(.literal(.microseconds(microSeconds)))
         }
 
-        public static func nanoseconds(_ nanoSeconds: Int) -> Stride {
+        static func nanoseconds(_ nanoSeconds: Int) -> Stride {
 
             .init(.literal(.nanoseconds(nanoSeconds)))
         }
@@ -441,7 +441,7 @@ public struct AnySchedulerTimeType: Strideable {
 
         fileprivate func asType<T: Comparable & SignedNumeric & SchedulerTimeIntervalConvertible>(
 
-           _ type: T.Type
+            _ type: T.Type
 
         ) -> T {
 
@@ -459,12 +459,12 @@ public struct AnySchedulerTimeType: Strideable {
 
     } // Stride
 
-    public func distance(to other: AnySchedulerTimeType) -> Stride {
+    func distance(to other: AnySchedulerTimeType) -> Stride {
 
         wrappedDistanceTo(other)
     }
 
-    public func advanced(by value: Stride) -> AnySchedulerTimeType {
+    func advanced(by value: Stride) -> AnySchedulerTimeType {
 
         wrappedAdvancedBy(value)
     }
@@ -482,12 +482,12 @@ public struct AnySchedulerTimeType: Strideable {
 
         self.wrappedDistanceTo = { other in
 
-            .init(wrapping: opaque.distance(to: other as! T))
+                .init(wrapping: opaque.distance(to: other as! T))
         }
 
         self.wrappedAdvancedBy = { time in
 
-            .init(wrapping: opaque.advanced(by: time.asType(T.Stride.self)))
+                .init(wrapping: opaque.advanced(by: time.asType(T.Stride.self)))
         }
     }
 

@@ -80,7 +80,7 @@ extension Publisher {
         compactMap { $0 }.eraseToAnyPublisher()
     }
 
-    public func ignoreValueSink(
+     func ignoreValueSink(
 
         receiveCompletion: @escaping ((Subscribers.Completion<Self.Failure>) -> Void)
 
@@ -89,7 +89,7 @@ extension Publisher {
         self.sink(receiveCompletion: receiveCompletion, receiveValue: { _ in })
     }
 
-    public func ignoreCompletionSink(
+     func ignoreCompletionSink(
 
         logger: Logger,
         receiveValue: @escaping ((Self.Output) -> Void)
@@ -112,7 +112,7 @@ extension Publisher {
         }, receiveValue: receiveValue)
     }
 
-    public func flattenMap<T>(
+     func flattenMap<T>(
 
         transform: @escaping (Output.Element) -> T
 
@@ -125,7 +125,7 @@ extension Publisher {
         .eraseToAnyPublisher()
     }
 
-    public func flattenCompactMap<T>(
+     func flattenCompactMap<T>(
 
         transform: @escaping (Output.Element) -> T?
 
@@ -138,7 +138,7 @@ extension Publisher {
         .eraseToAnyPublisher()
     }
 
-    public func validate(_ predicate: NSPredicate) -> AnyPublisher<Bool, Self.Failure> where Output == String {
+     func validate(_ predicate: NSPredicate) -> AnyPublisher<Bool, Self.Failure> where Output == String {
 
         map {
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E45599C2AD9625700186BA6 /* Controls+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E45599B2AD9625700186BA6 /* Controls+SearchBar.swift */; };
+		5E45599E2AD9629200186BA6 /* Controls+SearchBar+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E45599D2AD9629200186BA6 /* Controls+SearchBar+VM.swift */; };
+		5E4559A02AD9629700186BA6 /* Controls+SearchBar+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E45599F2AD9629700186BA6 /* Controls+SearchBar+View.swift */; };
 		5E8FDE692AD302F8003A69FC /* FrontendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FDE682AD302F8003A69FC /* FrontendApp.swift */; };
 		5E8FDE6D2AD302FA003A69FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8FDE6C2AD302FA003A69FC /* Assets.xcassets */; };
 		5E8FDE702AD302FA003A69FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8FDE6F2AD302FA003A69FC /* Preview Assets.xcassets */; };
@@ -77,6 +80,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E45599B2AD9625700186BA6 /* Controls+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+SearchBar.swift"; sourceTree = "<group>"; };
+		5E45599D2AD9629200186BA6 /* Controls+SearchBar+VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+SearchBar+VM.swift"; sourceTree = "<group>"; };
+		5E45599F2AD9629700186BA6 /* Controls+SearchBar+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+SearchBar+View.swift"; sourceTree = "<group>"; };
 		5E8FDE662AD302F8003A69FC /* Frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8FDE682AD302F8003A69FC /* FrontendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontendApp.swift; sourceTree = "<group>"; };
 		5E8FDE6C2AD302FA003A69FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +164,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E45599A2AD9624500186BA6 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				5E45599B2AD9625700186BA6 /* Controls+SearchBar.swift */,
+				5E45599D2AD9629200186BA6 /* Controls+SearchBar+VM.swift */,
+				5E45599F2AD9629700186BA6 /* Controls+SearchBar+View.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
 		5E8FDE672AD302F8003A69FC /* Frontend */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +301,7 @@
 			children = (
 				5EB431AA2AD80C5F00643FB5 /* Controls.swift */,
 				5E94C4692AD829BE007017A9 /* Button */,
+				5E45599A2AD9624500186BA6 /* SearchBar */,
 				5EB431C62AD80F7A00643FB5 /* TabHeader */,
 				5EB431AE2AD80C7100643FB5 /* WebView */,
 			);
@@ -514,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E45599E2AD9629200186BA6 /* Controls+SearchBar+VM.swift in Sources */,
 				5EE3BF292AD4559B00F072F7 /* Root+View.swift in Sources */,
 				5EB431BD2AD80EF500643FB5 /* Tab+Assets.swift in Sources */,
 				5EA4CCC42AD435A400BCEA38 /* Publishers+Timer.swift in Sources */,
@@ -531,6 +549,7 @@
 				5EC322E62AD5705300820156 /* Window+Model+Impl.swift in Sources */,
 				5EE3BF232AD4559B00F072F7 /* Root+Model+Impl.swift in Sources */,
 				5EB431C32AD80EF500643FB5 /* Tab.swift in Sources */,
+				5E4559A02AD9629700186BA6 /* Controls+SearchBar+View.swift in Sources */,
 				5E8FDE692AD302F8003A69FC /* FrontendApp.swift in Sources */,
 				5EB431C02AD80EF500643FB5 /* Tab+View.swift in Sources */,
 				5EC322E82AD5705300820156 /* Window+Assets.swift in Sources */,
@@ -547,6 +566,7 @@
 				5EC322EB2AD5705300820156 /* Window+View.swift in Sources */,
 				5EE3BF262AD4559B00F072F7 /* Root.swift in Sources */,
 				5EC322E92AD5705300820156 /* Window+VM+Impl.swift in Sources */,
+				5E45599C2AD9625700186BA6 /* Controls+SearchBar.swift in Sources */,
 				5EA4CCDB2AD44BAF00BCEA38 /* Utilities.swift in Sources */,
 				5EB431AB2AD80C5F00643FB5 /* Controls.swift in Sources */,
 				5EA4CCDA2AD44BAF00BCEA38 /* Utilities+UnfairLock.swift in Sources */,

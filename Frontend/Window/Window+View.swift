@@ -28,8 +28,9 @@ extension Window {
 
                 TabView(selection: $viewModel.selectedIdx) {
 
-                    ForEach(viewModel.tabVMs) { tabViewModel in
-                        Tab.View(viewModel: tabViewModel)
+                    ForEach(viewModel.tabVMs) {
+
+                        Tab.View(viewModel: $0)
                     }
                 }
                 // Padding and clipping hide standard macOS SwiftUI tabview ugliness.
@@ -37,14 +38,15 @@ extension Window {
                 .padding(EdgeInsets(top: -30, leading: -2, bottom: -2, trailing: -2))
                 .clipShape(Rectangle())
             }
+            .navigationTitle("")
+            .navigationSubtitle("")
             .toolbar {
 
                 ToolbarView(viewModel: viewModel)
             }
-
         } // body
 
-        private struct ToolbarView: SwiftUI.ToolbarContent {
+        struct ToolbarView: SwiftUI.ToolbarContent {
 
             @ObservedObject var viewModel: ViewModel.Interface
 
@@ -54,12 +56,10 @@ extension Window {
 
                     HStack(spacing: 16) {
                         Divider()
+
                         Text(viewModel.tabsCountText)
-                    }
+                            .font(.headline)
 
-                    Spacer()
-
-                    HStack(spacing: 0) {
                         Controls.Button.View(viewModel: viewModel.goBackButton)
                         Controls.Button.View(viewModel: viewModel.goForwardButton)
                     }
@@ -71,12 +71,12 @@ extension Window {
                         Controls.Button.View(viewModel: viewModel.preferencesButtonVM)
                     }
 
-                    HStack(spacing: 20) {
-                        /// search view
+                    Controls.SearchBar.View(
 
-                        Spacer()
-                    }
-                    .background(.gray)
+                        viewModel: viewModel.searchBarVM
+                    )
+                    .cornerRadius(4)
+                    .frame(minWidth: 300)
 
                     HStack(spacing: 20) {
                         /// tab view
@@ -90,8 +90,7 @@ extension Window {
                         Controls.Button.View(viewModel: viewModel.newPageButtonVM)
                         Controls.Button.View(viewModel: viewModel.overviewButtonVM)
                     }
-
-                } // body
+                }
 
             } // ToolbarView
         }

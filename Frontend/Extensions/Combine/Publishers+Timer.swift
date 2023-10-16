@@ -53,10 +53,10 @@ extension Publishers {
     /// scheduler.advance(by: 1_000)
     /// XCTAssertEqual(output, Array(0...1_001))
     /// ```
-    public final class Timer<S: Scheduler>: ConnectablePublisher {
+    final class Timer<S: Scheduler>: ConnectablePublisher {
 
-        public typealias Output = S.SchedulerTimeType
-        public typealias Failure = Never
+        typealias Output = S.SchedulerTimeType
+        typealias Failure = Never
 
         let tolerance: S.SchedulerTimeType.Stride?
         let interval: S.SchedulerTimeType.Stride
@@ -85,14 +85,14 @@ extension Publishers {
 
         // MARK: Publisher
 
-        public func receive<T: Subscriber>(subscriber: T) where Failure == T.Failure, Output == T.Input {
+        func receive<T: Subscriber>(subscriber: T) where Failure == T.Failure, Output == T.Input {
 
             routingSubscription.addSubscriber(subscriber)
         }
 
         // MARK: ConnectablePublisher
 
-        public func connect() -> Cancellable {
+        func connect() -> Cancellable {
 
             routingSubscription.isConnected = true
 

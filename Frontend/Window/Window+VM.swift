@@ -21,6 +21,7 @@ extension Window {
             @Published var selectedIdx: Int = 0
 
             let goBackButton: Controls.Button.ViewModel.Interface
+            let searchBarVM: Controls.SearchBar.ViewModel.Interface
             let shieldButtonVM: Controls.Button.ViewModel.Interface
             let goForwardButton: Controls.Button.ViewModel.Interface
             let newPageButtonVM: Controls.Button.ViewModel.Interface
@@ -30,6 +31,7 @@ extension Window {
             init(
 
                 goBackButton: Controls.Button.ViewModel.Interface,
+                searchBarVM: Controls.SearchBar.ViewModel.Interface,
                 shieldButtonVM: Controls.Button.ViewModel.Interface,
                 goForwardButton: Controls.Button.ViewModel.Interface,
                 newPageButtonVM: Controls.Button.ViewModel.Interface,
@@ -37,6 +39,7 @@ extension Window {
                 preferencesButtonVM: Controls.Button.ViewModel.Interface
 
             ) {
+                self.searchBarVM = searchBarVM
                 self.goBackButton = goBackButton
                 self.shieldButtonVM = shieldButtonVM
                 self.goForwardButton = goForwardButton

@@ -17,6 +17,7 @@ extension Root {
             @Published var windowVM: Window.ViewModel.Interface
 
             init(windowVM: Window.ViewModel.Interface) {
+
                 self.windowVM = windowVM
             }
 
