@@ -12,7 +12,9 @@ extension Controls.WebView {
 
     struct ViewModel {
 
-        class Interface: ObservableObject {
+        class Interface: ObservableObject, Identifiable {
+
+            let id = UUID()
 
             @Published var url: URL?
             @Published var estimatedProgress: Double = 0

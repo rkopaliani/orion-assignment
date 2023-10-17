@@ -22,6 +22,8 @@ extension Controls.WebView {
         var body: some SwiftUI.View {
 
             Impl(viewModel: viewModel)
+            // we have to `id` `Impl` to recreate it proper
+                .id(viewModel.id)
         }
     }
 }

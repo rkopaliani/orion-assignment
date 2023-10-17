@@ -72,17 +72,17 @@ extension Controls.WebView.View {
 
             super.init()
 
-            viewModel.onGoBackAction = { [weak self] in
+            viewModel.onGoBackAction = { [webView] in
 
-                self?.webView.goBack()
+                webView.goBack()
             }
-            viewModel.onGoForwardAction = { [weak self] in
+            viewModel.onGoForwardAction = { [webView] in
 
-                self?.webView.goForward()
+                webView.goForward()
             }
-            viewModel.onLoadURL = { [weak self] url in
+            viewModel.onLoadURL = { [webView] url in
 
-                self?.webView.load(.init(url: url))
+                webView.load(.init(url: url))
             }
         }
 

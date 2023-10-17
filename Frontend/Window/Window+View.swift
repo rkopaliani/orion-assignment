@@ -24,12 +24,9 @@ extension Window {
 
             } detail: {
 
-                TabView(selection: $viewModel.selectedIdx) {
+                TabView(selection: $viewModel.selectedTabVM) {
 
-                    ForEach(viewModel.tabVMs) {
-
-                        Tab.View(viewModel: $0)
-                    }
+                    Tab.View(viewModel: viewModel.selectedTabVM)
                 }
                 // Padding and clipping hide standard macOS SwiftUI tabview ugliness.
                 // Better to replace it with custom tab view implementation.

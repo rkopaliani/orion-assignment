@@ -15,8 +15,8 @@ extension Window {
 
         class Interface: ObservableObject, Identifiable {
 
-            @Published var selectedIdx: Int?
             @Published var tabsCountText: String = ""
+            @Published var selectedTabVM: Tab.ViewModel.Interface
             @Published var tabVMs: [Tab.ViewModel.Interface] = []
 
             let goBackButton: Controls.Button.ViewModel.Interface
@@ -29,6 +29,7 @@ extension Window {
 
             init(
 
+                selectedTabVM: Tab.ViewModel.Interface,
                 goBackButton: Controls.Button.ViewModel.Interface,
                 searchBarVM: Controls.SearchBar.ViewModel.Interface,
                 shieldButtonVM: Controls.Button.ViewModel.Interface,
@@ -40,6 +41,7 @@ extension Window {
             ) {
                 self.searchBarVM = searchBarVM
                 self.goBackButton = goBackButton
+                self.selectedTabVM = selectedTabVM
                 self.shieldButtonVM = shieldButtonVM
                 self.goForwardButton = goForwardButton
                 self.newPageButtonVM = newPageButtonVM

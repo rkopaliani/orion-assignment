@@ -13,7 +13,7 @@ extension Tab {
 
     struct ViewModel {
 
-        class Interface: ObservableObject, Identifiable {
+        class Interface: ObservableObject, Identifiable, Equatable, Hashable {
 
             let id = UUID()
 
@@ -41,6 +41,20 @@ extension Tab {
             func goForward() {
 
                 webViewVM.onGoForwardAction?()
+            }
+
+            // MARK: Equatable
+
+            static func == (lhs: Tab.ViewModel.Interface, rhs: Tab.ViewModel.Interface) -> Bool {
+
+                lhs.id == rhs.id
+            }
+
+            // MARK: Hashable
+
+            func hash(into hasher: inout Hasher) {
+
+                hasher.combine(id)
             }
 
         } // Interface

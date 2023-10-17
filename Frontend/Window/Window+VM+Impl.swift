@@ -42,6 +42,7 @@ extension Window.ViewModel {
 
             super.init(
 
+                selectedTabVM: resolver.resolve(Tab.ViewModel.Interface.self)!,
                 goBackButton: Controls.Button.ViewModel.Impl {
 
                     $0.kind = .systemIcon
@@ -84,11 +85,11 @@ extension Window.ViewModel {
 
             goBackButton.action = { [weak self] in
 
-                self?.selectedTab?.goBack()
+                self?.selectedTabVM.goBack()
             }
             goForwardButton.action = { [weak self] in
 
-                self?.selectedTab?.goForward()
+                self?.selectedTabVM.goForward()
             }
             newPageButtonVM.action = { [weak self] in
 
@@ -100,24 +101,13 @@ extension Window.ViewModel {
 
                     return
                 }
-                self.selectedTab?.loadUrl(url)
+                self.selectedTabVM.loadUrl(url)
             }
 
-            subject.selectedTabIdx
+            $selectedTabVM
 
                 .removeDuplicates()
                 .receive(on: scheduler)
-                .weakAssign(to: \.selectedIdx, on: self)
-                .store(in: &cancellables)
-
-            subject.selectedTabIdx
-
-                .removeDuplicates()
-                .receive(on: scheduler)
-                .map { [weak self] _ in
-                    self?.selectedTab
-                }
-                .unwrap()
                 .sink { [weak self] tabVM in
 
                     guard let self else {
@@ -166,7 +156,7 @@ extension Window.ViewModel {
 
             // just creating empty tab
             // no state restoration here
-            openNewTab()
+            subject.tabs.send([selectedTabVM])
         }
 
         // MARK: - Privates
@@ -180,28 +170,20 @@ extension Window.ViewModel {
         private let model: Model.Interface
         private let subject = (
 
-            selectedTabIdx: CurrentValueSubject<Int?, Never>(nil),
-            tabs: CurrentValueSubject<[Tab.ViewModel.Interface], Never>([])
+            tabs: CurrentValueSubject<[Tab.ViewModel.Interface], Never>([]),
+            ()
         )
 
         private var cancellables = Set<AnyCancellable>()
         private var tabCancellables = Set<AnyCancellable>()
 
-        private var selectedTab: Tab.ViewModel.Interface? {
-
-            guard let idx = subject.selectedTabIdx.value, idx < subject.tabs.value.count else {
-
-                return nil
-            }
-
-            return subject.tabs.value[idx]
-        }
-
         private func openNewTab() {
 
             var tabs = subject.tabs.value
-            tabs.append(resolver.resolve(Tab.ViewModel.Interface.self)!)
+            let newTabVM = resolver.resolve(Tab.ViewModel.Interface.self)!
+            tabs.append(newTabVM)
             subject.tabs.send(tabs)
+            selectedTabVM = newTabVM
         }
 
     } // Impl
