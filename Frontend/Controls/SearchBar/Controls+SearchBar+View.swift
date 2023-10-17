@@ -18,12 +18,14 @@ extension Controls.SearchBar {
 
             HStack {
 
-                Controls.Button.View(
-
-                    viewModel: viewModel.profilesButtonVM
-                )
+                Image(systemName: "circle.fill")
+                    .resizable()
+                    .frame(width: 8, height: 8)
+                    .padding(.init(top: 10, leading: 8, bottom: 10, trailing: 0))
 
                 Divider()
+                    .padding(.init(top: 4, leading: 0, bottom: 4, trailing: 0))
+
                 TextField(
 
                     viewModel.title,
@@ -37,11 +39,10 @@ extension Controls.SearchBar {
                     viewModel.onCommitAction?()
                 }
             }
-            .padding(.init(top: 4, leading: 8, bottom: 4, trailing: 8))
             .overlay {
                 RoundedRectangle(
 
-                    cornerRadius: 4
+                    cornerRadius: 6
                 )
                 .strokeBorder(.separator)
             }

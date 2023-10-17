@@ -147,8 +147,6 @@ extension Window.ViewModel {
                         .map { $0?.relativeString ?? "" }
                         .weakAssign(to: \.urlText, on: self.searchBarVM)
                         .store(in: &cancellables)
-
-                    self.selectedIdx = idx
                 }
                 .store(in: &cancellables)
 

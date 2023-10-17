@@ -22,8 +22,6 @@ extension Window {
 
             NavigationSplitView {
 
-                Text("Sidebar")
-
             } detail: {
 
                 TabView(selection: $viewModel.selectedIdx) {
@@ -64,13 +62,16 @@ extension Window {
                         )
                         .font(.headline)
 
-                        Controls.Button.View(viewModel: viewModel.goBackButton)
-                        Controls.Button.View(viewModel: viewModel.goForwardButton)
+                        HStack(spacing: 0) {
+
+                            Controls.Button.View(viewModel: viewModel.goBackButton)
+                            Controls.Button.View(viewModel: viewModel.goForwardButton)
+                        }
                     }
 
                     Spacer()
 
-                    HStack(spacing: 12) {
+                    HStack(spacing: 4) {
 
                         Controls.Button.View(viewModel: viewModel.shieldButtonVM)
                         Controls.Button.View(viewModel: viewModel.preferencesButtonVM)
@@ -81,7 +82,7 @@ extension Window {
                         viewModel: viewModel.searchBarVM
                     )
                     .cornerRadius(4)
-                    .frame(minWidth: 300)
+                    .frame(minWidth: 300, idealWidth: 500)
 
                     HStack(spacing: 20) {
                         /// tab view
@@ -91,7 +92,7 @@ extension Window {
 
                     Spacer()
 
-                    HStack {
+                    HStack(spacing: 4) {
 
                         Controls.Button.View(viewModel: viewModel.newPageButtonVM)
                         Controls.Button.View(viewModel: viewModel.overviewButtonVM)

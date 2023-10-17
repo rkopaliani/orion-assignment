@@ -49,7 +49,6 @@ extension Controls.Button {
                     action: { viewModel.action?() },
                     label: { Image(systemName: viewModel.icon) }
                 )
-                .buttonStyle(.borderless)
                 .disabled(viewModel.isDisabled)
             }
 

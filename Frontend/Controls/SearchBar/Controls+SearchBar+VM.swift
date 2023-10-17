@@ -14,18 +14,11 @@ extension Controls.SearchBar {
 
         class Interface: ObservableObject {
 
-            let profilesButtonVM: Controls.Button.ViewModel.Interface
-
             @Published var title: String = ""
             @Published var prompt: String = ""
             @Published var urlText: String = ""
 
             var onCommitAction: (() -> Void)?
-
-            init(profilesButtonVM: Controls.Button.ViewModel.Interface) {
-
-                self.profilesButtonVM = profilesButtonVM
-            }
         }
 
         // MARK: -
@@ -34,14 +27,7 @@ extension Controls.SearchBar {
 
             init(configure: (Interface) -> Void = { _ in }) {
 
-                super.init(
-
-                    profilesButtonVM: Controls.Button.ViewModel.Impl {
-
-                        $0.kind = .systemIcon
-                        $0.icon = "circle.fill"
-                    }
-                )
+                super.init()
 
                 configure(self)
             }
