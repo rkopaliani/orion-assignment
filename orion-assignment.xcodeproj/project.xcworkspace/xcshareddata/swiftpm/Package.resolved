@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "favicon",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leonbreedt/FavIcon.git",
+      "state" : {
+        "revision" : "5bf16aad3ea543891eaef7e8da2aa2f6bb29e6e4",
+        "version" : "3.1.0"
+      }
+    },
+    {
       "identity" : "nimble",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Quick/Nimble.git",

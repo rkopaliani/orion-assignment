@@ -18,6 +18,7 @@ extension Tab {
             let id = UUID()
 
             @Published var url: URL?
+
             @Published var canGoBack = false
             @Published var canGoForward = false
 

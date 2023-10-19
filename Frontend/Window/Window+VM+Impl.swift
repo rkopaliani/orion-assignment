@@ -9,6 +9,7 @@
 import Combine
 import OSLog
 
+import SwiftUI
 import Swinject
 
 private let logger = Logger(category: "Window.VM")
@@ -43,6 +44,7 @@ extension Window.ViewModel {
             super.init(
 
                 selectedTabVM: resolver.resolve(Tab.ViewModel.Interface.self)!,
+                tabsVM: Window.TabsView.ViewModel.Impl { _ in },
                 goBackButton: Controls.Button.ViewModel.Impl {
 
                     $0.kind = .systemIcon
@@ -143,6 +145,13 @@ extension Window.ViewModel {
             subject.tabs
 
                 .receive(on: scheduler)
+                .flattenMap(transform: create(tabHeaderViewModel:))
+                .weakAssign(to: \.tabVMs, on: tabsVM)
+                .store(in: &cancellables)
+
+            subject.tabs
+
+                .receive(on: scheduler)
                 .weakAssign(to: \.tabVMs, on: self)
                 .store(in: &cancellables)
 
@@ -163,6 +172,7 @@ extension Window.ViewModel {
 
         private typealias Model = Window.Model
         private typealias TextIds = Window.Assets.TextIds
+        private typealias TabViewModel = Window.TabsView.Tab.ViewModel
 
         private let resolver: Resolver
         private let scheduler: AnyScheduler
@@ -176,6 +186,52 @@ extension Window.ViewModel {
 
         private var cancellables = Set<AnyCancellable>()
         private var tabCancellables = Set<AnyCancellable>()
+
+        private func create(tabHeaderViewModel viewModel: Tab.ViewModel.Interface) -> TabViewModel.Interface {
+
+            let tabVM = TabViewModel.Impl {
+
+                $0.icon = nil
+
+                if let url = viewModel.url {
+
+                    $0.title = url.host() ?? url.relativeString
+
+                } else {
+
+                    $0.title = "Empty Tab"
+                }
+            }
+
+            viewModel.$url
+
+                .removeDuplicates()
+                .receive(on: scheduler)
+                .map { $0?.host() }
+                .unwrap()
+                .sink(receiveValue: { title in
+                    tabVM.title = title
+                })
+                .store(in: &cancellables)
+
+            viewModel.$url
+
+                .unwrap()
+                .removeDuplicates()
+                .flatMap {
+                    self.model.websiteFavIcon(for: $0)
+                }
+                .unwrap()
+                .map { Image(nsImage: $0) }
+                .receive(on: scheduler)
+                .sink(receiveValue: { image in
+
+                    tabVM.icon = image
+                })
+                .store(in: &cancellables)
+
+            return tabVM
+        }
 
         private func openNewTab() {
 

@@ -81,11 +81,7 @@ extension Window {
                     .cornerRadius(4)
                     .frame(minWidth: 300, idealWidth: 500)
 
-                    HStack(spacing: 20) {
-                        /// tab view
-                        Spacer()
-                    }
-                    .background(.blue)
+                    Window.TabsView.View(viewModel: viewModel.tabsVM)
 
                     Spacer()
 

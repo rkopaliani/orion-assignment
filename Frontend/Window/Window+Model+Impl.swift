@@ -6,9 +6,11 @@
 //  Copyright © 2023 orion-assigment. All rights reserved.
 //
 
+import AppKit
 import Combine
 import OSLog
 
+import FavIcon
 import Swinject
 
 private let logger = Logger(category: "Window.Model")
@@ -41,6 +43,37 @@ extension Window.Model {
         }
 
         // MARK: - Interface
+
+        func websiteFavIcon(for url: URL) -> AnyPublisher<NSImage?, Never> {
+
+            Deferred {
+
+                Future { promise in
+
+                    do {
+
+                        try FavIcon.downloadPreferred(url, width: 32, height: 32) { downloadResult in
+
+                            if case let .success(image) = downloadResult {
+
+                                promise(.success(image))
+
+                            } else {
+
+                                // we ignore error for now
+                                promise(.success(nil))
+                            }
+
+                        }
+
+                    } catch {
+
+                        promise(.success(nil))
+                    }
+                }
+            }
+            .eraseToAnyPublisher()
+        }
 
         // MARK: - Privates
 

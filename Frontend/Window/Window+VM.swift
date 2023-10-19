@@ -19,6 +19,7 @@ extension Window {
             @Published var selectedTabVM: Tab.ViewModel.Interface
             @Published var tabVMs: [Tab.ViewModel.Interface] = []
 
+            let tabsVM: Window.TabsView.ViewModel.Interface
             let goBackButton: Controls.Button.ViewModel.Interface
             let searchBarVM: Controls.SearchBar.ViewModel.Interface
             let shieldButtonVM: Controls.Button.ViewModel.Interface
@@ -30,6 +31,7 @@ extension Window {
             init(
 
                 selectedTabVM: Tab.ViewModel.Interface,
+                tabsVM: Window.TabsView.ViewModel.Interface,
                 goBackButton: Controls.Button.ViewModel.Interface,
                 searchBarVM: Controls.SearchBar.ViewModel.Interface,
                 shieldButtonVM: Controls.Button.ViewModel.Interface,
@@ -39,6 +41,7 @@ extension Window {
                 preferencesButtonVM: Controls.Button.ViewModel.Interface
 
             ) {
+                self.tabsVM = tabsVM
                 self.searchBarVM = searchBarVM
                 self.goBackButton = goBackButton
                 self.selectedTabVM = selectedTabVM

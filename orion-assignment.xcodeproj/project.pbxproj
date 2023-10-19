@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E3A068B2ADFCD49009381A5 /* Windows+TabsView+Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A068A2ADFCD49009381A5 /* Windows+TabsView+Tab.swift */; };
+		5E3A068D2ADFCD66009381A5 /* Windows+TabsView+Tab+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A068C2ADFCD66009381A5 /* Windows+TabsView+Tab+VM.swift */; };
+		5E3A068F2ADFCD6C009381A5 /* Windows+TabsView+Tab+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A068E2ADFCD6C009381A5 /* Windows+TabsView+Tab+View.swift */; };
+		5E3A07172AE00DCB009381A5 /* FavIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 5E3A07162AE00DCB009381A5 /* FavIcon */; };
 		5E45599C2AD9625700186BA6 /* Controls+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E45599B2AD9625700186BA6 /* Controls+SearchBar.swift */; };
 		5E45599E2AD9629200186BA6 /* Controls+SearchBar+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E45599D2AD9629200186BA6 /* Controls+SearchBar+VM.swift */; };
 		5E4559A02AD9629700186BA6 /* Controls+SearchBar+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E45599F2AD9629700186BA6 /* Controls+SearchBar+View.swift */; };
+		5E49D6A72ADED2260002F1FF /* Window+TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D6A62ADED2260002F1FF /* Window+TabsView.swift */; };
+		5E49D6A92ADED26E0002F1FF /* Window+TabsView+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D6A82ADED26E0002F1FF /* Window+TabsView+View.swift */; };
+		5E49D6AB2ADED2750002F1FF /* Window+TabsView+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D6AA2ADED2750002F1FF /* Window+TabsView+VM.swift */; };
 		5E8FDE692AD302F8003A69FC /* FrontendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FDE682AD302F8003A69FC /* FrontendApp.swift */; };
 		5E8FDE6D2AD302FA003A69FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8FDE6C2AD302FA003A69FC /* Assets.xcassets */; };
 		5E8FDE702AD302FA003A69FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8FDE6F2AD302FA003A69FC /* Preview Assets.xcassets */; };
@@ -44,7 +51,6 @@
 		5EB431C12AD80EF500643FB5 /* Tab+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431BA2AD80EF400643FB5 /* Tab+VM.swift */; };
 		5EB431C22AD80EF500643FB5 /* Tab+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431BB2AD80EF400643FB5 /* Tab+Model.swift */; };
 		5EB431C32AD80EF500643FB5 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431BC2AD80EF400643FB5 /* Tab.swift */; };
-		5EB431C52AD80F7600643FB5 /* Controls+TabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431C42AD80F7600643FB5 /* Controls+TabHeader.swift */; };
 		5EB431CB2AD812A800643FB5 /* Controls+WebView+View+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB431CA2AD812A800643FB5 /* Controls+WebView+View+Impl.swift */; };
 		5EC322E52AD5705300820156 /* Window+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322DE2AD5705300820156 /* Window+VM.swift */; };
 		5EC322E62AD5705300820156 /* Window+Model+Impl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC322DF2AD5705300820156 /* Window+Model+Impl.swift */; };
@@ -80,9 +86,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E3A068A2ADFCD49009381A5 /* Windows+TabsView+Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Windows+TabsView+Tab.swift"; sourceTree = "<group>"; };
+		5E3A068C2ADFCD66009381A5 /* Windows+TabsView+Tab+VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Windows+TabsView+Tab+VM.swift"; sourceTree = "<group>"; };
+		5E3A068E2ADFCD6C009381A5 /* Windows+TabsView+Tab+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Windows+TabsView+Tab+View.swift"; sourceTree = "<group>"; };
 		5E45599B2AD9625700186BA6 /* Controls+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+SearchBar.swift"; sourceTree = "<group>"; };
 		5E45599D2AD9629200186BA6 /* Controls+SearchBar+VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+SearchBar+VM.swift"; sourceTree = "<group>"; };
 		5E45599F2AD9629700186BA6 /* Controls+SearchBar+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+SearchBar+View.swift"; sourceTree = "<group>"; };
+		5E49D6A62ADED2260002F1FF /* Window+TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+TabsView.swift"; sourceTree = "<group>"; };
+		5E49D6A82ADED26E0002F1FF /* Window+TabsView+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+TabsView+View.swift"; sourceTree = "<group>"; };
+		5E49D6AA2ADED2750002F1FF /* Window+TabsView+VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+TabsView+VM.swift"; sourceTree = "<group>"; };
 		5E8FDE662AD302F8003A69FC /* Frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8FDE682AD302F8003A69FC /* FrontendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontendApp.swift; sourceTree = "<group>"; };
 		5E8FDE6C2AD302FA003A69FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,7 +131,6 @@
 		5EB431BA2AD80EF400643FB5 /* Tab+VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+VM.swift"; sourceTree = "<group>"; };
 		5EB431BB2AD80EF400643FB5 /* Tab+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tab+Model.swift"; sourceTree = "<group>"; };
 		5EB431BC2AD80EF400643FB5 /* Tab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		5EB431C42AD80F7600643FB5 /* Controls+TabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+TabHeader.swift"; sourceTree = "<group>"; };
 		5EB431CA2AD812A800643FB5 /* Controls+WebView+View+Impl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controls+WebView+View+Impl.swift"; sourceTree = "<group>"; };
 		5EC322DE2AD5705300820156 /* Window+VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+VM.swift"; sourceTree = "<group>"; };
 		5EC322DF2AD5705300820156 /* Window+Model+Impl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Window+Model+Impl.swift"; sourceTree = "<group>"; };
@@ -142,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E3A07172AE00DCB009381A5 /* FavIcon in Frameworks */,
 				5E8FDE962AD3038C003A69FC /* CombineExt in Frameworks */,
 				5E8FDE942AD3038C003A69FC /* Swinject in Frameworks */,
 			);
@@ -164,6 +176,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E3A06892ADFCD39009381A5 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A068A2ADFCD49009381A5 /* Windows+TabsView+Tab.swift */,
+				5E3A068C2ADFCD66009381A5 /* Windows+TabsView+Tab+VM.swift */,
+				5E3A068E2ADFCD6C009381A5 /* Windows+TabsView+Tab+View.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		5E45599A2AD9624500186BA6 /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +194,17 @@
 				5E45599F2AD9629700186BA6 /* Controls+SearchBar+View.swift */,
 			);
 			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		5E49D6A52ADED2180002F1FF /* TabsView */ = {
+			isa = PBXGroup;
+			children = (
+				5E49D6A62ADED2260002F1FF /* Window+TabsView.swift */,
+				5E49D6A82ADED26E0002F1FF /* Window+TabsView+View.swift */,
+				5E49D6AA2ADED2750002F1FF /* Window+TabsView+VM.swift */,
+				5E3A06892ADFCD39009381A5 /* Tab */,
+			);
+			path = TabsView;
 			sourceTree = "<group>";
 		};
 		5E8FDE672AD302F8003A69FC /* Frontend */ = {
@@ -302,7 +335,6 @@
 				5EB431AA2AD80C5F00643FB5 /* Controls.swift */,
 				5E94C4692AD829BE007017A9 /* Button */,
 				5E45599A2AD9624500186BA6 /* SearchBar */,
-				5EB431C62AD80F7A00643FB5 /* TabHeader */,
 				5EB431AE2AD80C7100643FB5 /* WebView */,
 			);
 			path = Controls;
@@ -333,14 +365,6 @@
 			path = Tab;
 			sourceTree = "<group>";
 		};
-		5EB431C62AD80F7A00643FB5 /* TabHeader */ = {
-			isa = PBXGroup;
-			children = (
-				5EB431C42AD80F7600643FB5 /* Controls+TabHeader.swift */,
-			);
-			path = TabHeader;
-			sourceTree = "<group>";
-		};
 		5EC322DD2AD5705300820156 /* Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +375,7 @@
 				5EC322E42AD5705300820156 /* Window+View.swift */,
 				5EC322DE2AD5705300820156 /* Window+VM.swift */,
 				5EC322E22AD5705300820156 /* Window+VM+Impl.swift */,
+				5E49D6A52ADED2180002F1FF /* TabsView */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -389,6 +414,7 @@
 			packageProductDependencies = (
 				5E8FDE932AD3038C003A69FC /* Swinject */,
 				5E8FDE952AD3038C003A69FC /* CombineExt */,
+				5E3A07162AE00DCB009381A5 /* FavIcon */,
 			);
 			productName = Frontend;
 			productReference = 5E8FDE662AD302F8003A69FC /* Frontend.app */;
@@ -466,6 +492,7 @@
 				5EA3BEDA2AD2F34E003A831D /* XCRemoteSwiftPackageReference "Swinject" */,
 				5EA3BEDD2AD2F375003A831D /* XCRemoteSwiftPackageReference "CombineExt" */,
 				5EA3BEE02AD2F394003A831D /* XCRemoteSwiftPackageReference "Nimble" */,
+				5E3A07152AE00DCB009381A5 /* XCRemoteSwiftPackageReference "FavIcon" */,
 			);
 			productRefGroup = 5EA3BEB32AD2F059003A831D /* Products */;
 			projectDirPath = "";
@@ -548,9 +575,11 @@
 				5EE3BF242AD4559B00F072F7 /* Root+VM+Impl.swift in Sources */,
 				5EC322E62AD5705300820156 /* Window+Model+Impl.swift in Sources */,
 				5EE3BF232AD4559B00F072F7 /* Root+Model+Impl.swift in Sources */,
+				5E3A068D2ADFCD66009381A5 /* Windows+TabsView+Tab+VM.swift in Sources */,
 				5EB431C32AD80EF500643FB5 /* Tab.swift in Sources */,
 				5E4559A02AD9629700186BA6 /* Controls+SearchBar+View.swift in Sources */,
 				5E8FDE692AD302F8003A69FC /* FrontendApp.swift in Sources */,
+				5E49D6A92ADED26E0002F1FF /* Window+TabsView+View.swift in Sources */,
 				5EB431C02AD80EF500643FB5 /* Tab+View.swift in Sources */,
 				5EC322E82AD5705300820156 /* Window+Assets.swift in Sources */,
 				5EE3BF272AD4559B00F072F7 /* Root+VM.swift in Sources */,
@@ -562,7 +591,6 @@
 				5EA4CCCC2AD435A400BCEA38 /* SwiftUI+PreviewProvider.swift in Sources */,
 				5EA4CCC32AD435A400BCEA38 /* Scheduler+Extension.swift in Sources */,
 				5EA4CCC02AD435A400BCEA38 /* Optionals+Auxiliary.swift in Sources */,
-				5EB431C52AD80F7600643FB5 /* Controls+TabHeader.swift in Sources */,
 				5EC322EB2AD5705300820156 /* Window+View.swift in Sources */,
 				5EE3BF262AD4559B00F072F7 /* Root.swift in Sources */,
 				5EC322E92AD5705300820156 /* Window+VM+Impl.swift in Sources */,
@@ -572,10 +600,14 @@
 				5EA4CCDA2AD44BAF00BCEA38 /* Utilities+UnfairLock.swift in Sources */,
 				5EB431C12AD80EF500643FB5 /* Tab+VM.swift in Sources */,
 				5E94C4712AD82A1D007017A9 /* Controls+Button.swift in Sources */,
+				5E49D6AB2ADED2750002F1FF /* Window+TabsView+VM.swift in Sources */,
 				5EE3BF252AD4559B00F072F7 /* Root+Assets.swift in Sources */,
+				5E3A068B2ADFCD49009381A5 /* Windows+TabsView+Tab.swift in Sources */,
 				5E94C4732AD82A1D007017A9 /* Controls+Button+VM.swift in Sources */,
 				5EA4CCCA2AD435A400BCEA38 /* Swinject+Auxiliary.swift in Sources */,
+				5E3A068F2ADFCD6C009381A5 /* Windows+TabsView+Tab+View.swift in Sources */,
 				5EC322E72AD5705300820156 /* Window.swift in Sources */,
+				5E49D6A72ADED2260002F1FF /* Window+TabsView.swift in Sources */,
 				5EB431BE2AD80EF500643FB5 /* Tab+Model+Impl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -931,6 +963,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5E3A07152AE00DCB009381A5 /* XCRemoteSwiftPackageReference "FavIcon" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/leonbreedt/FavIcon.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		5EA3BEDA2AD2F34E003A831D /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -958,6 +998,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5E3A07162AE00DCB009381A5 /* FavIcon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E3A07152AE00DCB009381A5 /* XCRemoteSwiftPackageReference "FavIcon" */;
+			productName = FavIcon;
+		};
 		5E8FDE932AD3038C003A69FC /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5EA3BEDA2AD2F34E003A831D /* XCRemoteSwiftPackageReference "Swinject" */;
