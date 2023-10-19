@@ -17,6 +17,7 @@ extension Controls.WebView {
             let id = UUID()
 
             @Published var url: URL?
+            @Published var title: String?
             @Published var estimatedProgress: Double = 0
 
             @Published var canGoBack = false

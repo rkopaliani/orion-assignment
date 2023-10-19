@@ -1,5 +1,5 @@
 //
-//  Tab+VM+Impl.swift
+//  Tab+Content+VM+Impl.swift
 //  Frontend
 //
 //  Created by script on 12.10.2023.
@@ -13,7 +13,7 @@ import Swinject
 
 private let logger = Logger(category: "Tab.VM")
 
-extension Tab.ViewModel {
+extension Tab.Content.ViewModel {
 
     struct Factory {
 
@@ -64,12 +64,20 @@ extension Tab.ViewModel {
                 .receive(on: scheduler)
                 .weakAssign(to: \.url, on: self)
                 .store(in: &cancellables)
+
+            webViewVM.$title
+
+                .removeDuplicates()
+                .receive(on: scheduler)
+                .weakAssign(to: \.title, on: self)
+                .store(in: &cancellables)
+
         }
 
         // MARK: - Privates
 
-        private typealias Model = Tab.Model
-        private typealias TextIds = Tab.Assets.TextIds
+        private typealias Model = Tab.Content.Model
+        private typealias TextIds = Tab.Content.Assets.TextIds
 
         private let resolver: Resolver
         private let scheduler: AnyScheduler
@@ -80,4 +88,4 @@ extension Tab.ViewModel {
 
     } // Impl
 
-} // Tab.ViewModel
+} // Tab.Content.ViewModel

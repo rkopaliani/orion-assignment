@@ -28,7 +28,7 @@ extension Window.ViewModel {
             }
             .inObjectScope(.transient)
 
-            Tab.ViewModel.Factory.register(with: container, scheduler: scheduler)
+            Tab.Content.ViewModel.Factory.register(with: container, scheduler: scheduler)
         }
     }
 
@@ -43,8 +43,8 @@ extension Window.ViewModel {
 
             super.init(
 
-                selectedTabVM: resolver.resolve(Tab.ViewModel.Interface.self)!,
-                tabsVM: Window.TabsView.ViewModel.Impl { _ in },
+                tabsHeader: Tab.Header.ViewModel.Impl { _ in },
+                selectedTabVM: resolver.resolve(Tab.Content.ViewModel.Interface.self)!,
                 goBackButton: Controls.Button.ViewModel.Impl {
 
                     $0.kind = .systemIcon
@@ -145,8 +145,8 @@ extension Window.ViewModel {
             subject.tabs
 
                 .receive(on: scheduler)
-                .flattenMap(transform: create(tabHeaderViewModel:))
-                .weakAssign(to: \.tabVMs, on: tabsVM)
+                .flattenMap(transform: createTab(item:))
+                .weakAssign(to: \.tabVMs, on: tabsHeader)
                 .store(in: &cancellables)
 
             subject.tabs
@@ -172,7 +172,8 @@ extension Window.ViewModel {
 
         private typealias Model = Window.Model
         private typealias TextIds = Window.Assets.TextIds
-        private typealias TabViewModel = Window.TabsView.Tab.ViewModel
+
+        private typealias TabItemVM = Tab.Header.Item.ViewModel
 
         private let resolver: Resolver
         private let scheduler: AnyScheduler
@@ -180,20 +181,20 @@ extension Window.ViewModel {
         private let model: Model.Interface
         private let subject = (
 
-            tabs: CurrentValueSubject<[Tab.ViewModel.Interface], Never>([]),
+            tabs: CurrentValueSubject<[Tab.Content.ViewModel.Interface], Never>([]),
             ()
         )
 
         private var cancellables = Set<AnyCancellable>()
         private var tabCancellables = Set<AnyCancellable>()
 
-        private func create(tabHeaderViewModel viewModel: Tab.ViewModel.Interface) -> TabViewModel.Interface {
+        private func createTab(item tabContent: Tab.Content.ViewModel.Interface) -> TabItemVM.Interface {
 
-            let tabVM = TabViewModel.Impl {
+            let tabVM = TabItemVM.Impl {
 
                 $0.icon = nil
 
-                if let url = viewModel.url {
+                if let url = tabContent.url {
 
                     $0.title = url.host() ?? url.relativeString
 
@@ -203,18 +204,15 @@ extension Window.ViewModel {
                 }
             }
 
-            viewModel.$url
+            tabContent.$title
 
-                .removeDuplicates()
                 .receive(on: scheduler)
-                .map { $0?.host() }
                 .unwrap()
-                .sink(receiveValue: { title in
-                    tabVM.title = title
-                })
+                .filter { !$0.isEmpty }
+                .weakAssign(to: \.title, on: tabVM)
                 .store(in: &cancellables)
 
-            viewModel.$url
+            tabContent.$url
 
                 .unwrap()
                 .removeDuplicates()
@@ -224,11 +222,20 @@ extension Window.ViewModel {
                 .unwrap()
                 .map { Image(nsImage: $0) }
                 .receive(on: scheduler)
-                .sink(receiveValue: { image in
-
-                    tabVM.icon = image
-                })
+                .weakAssign(to: \.icon, on: tabVM)
                 .store(in: &cancellables)
+
+            tabVM.onCloseAction = { [weak self] in
+
+                guard let self else {
+
+                    return
+                }
+
+                var tabs = self.subject.tabs.value
+                tabs.removeAll { $0.id == tabContent.id }
+                subject.tabs.send(tabs)
+            }
 
             return tabVM
         }
@@ -236,7 +243,7 @@ extension Window.ViewModel {
         private func openNewTab() {
 
             var tabs = subject.tabs.value
-            let newTabVM = resolver.resolve(Tab.ViewModel.Interface.self)!
+            let newTabVM = resolver.resolve(Tab.Content.ViewModel.Interface.self)!
             tabs.append(newTabVM)
             subject.tabs.send(tabs)
             selectedTabVM = newTabVM

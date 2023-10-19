@@ -29,7 +29,7 @@ extension Window.Model {
             }
             .inObjectScope(.transient)
 
-            Tab.Model.Factory.register(with: container)
+            Tab.Content.Model.Factory.register(with: container)
         }
     }
 

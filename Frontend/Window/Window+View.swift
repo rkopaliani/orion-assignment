@@ -26,7 +26,7 @@ extension Window {
 
                 TabView(selection: $viewModel.selectedTabVM) {
 
-                    Tab.View(viewModel: viewModel.selectedTabVM)
+                    Tab.Content.View(viewModel: viewModel.selectedTabVM)
                 }
                 // Padding and clipping hide standard macOS SwiftUI tabview ugliness.
                 // Better to replace it with custom tab view implementation.
@@ -81,7 +81,7 @@ extension Window {
                     .cornerRadius(4)
                     .frame(minWidth: 300, idealWidth: 500)
 
-                    Window.TabsView.View(viewModel: viewModel.tabsVM)
+                    Tab.Header.View(viewModel: viewModel.tabsHeader)
 
                     Spacer()
 

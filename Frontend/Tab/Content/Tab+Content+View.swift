@@ -1,5 +1,5 @@
 //
-//  Tab+View.swift
+//  Tab+Content+View.swift
 //  Frontend
 //
 //  Created by script on 12.10.2023.
@@ -11,7 +11,7 @@ import SwiftUI
 
 import Swinject
 
-extension Tab {
+extension Tab.Content {
 
     struct View: SwiftUI.View {
 
@@ -46,17 +46,17 @@ extension Tab {
 
 #if DEBUG
 
-struct Tab_Preview_Provider: PreviewProvider {
+struct Tab_Content_Preview_Provider: PreviewProvider {
 
-    typealias Model = Tab.Model
+    typealias Model = Tab.Content.Model
 
     static var previews: some SwiftUI.View {
 
         View(viewModel: staticContext.viewModel)
     }
 
-    private typealias View = Tab.View
-    private typealias ViewModel = Tab.ViewModel
+    private typealias View = Tab.Content.View
+    private typealias ViewModel = Tab.Content.ViewModel
 
     private final class Context: ObservableObject {
 

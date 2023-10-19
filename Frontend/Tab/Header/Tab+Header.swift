@@ -1,13 +1,13 @@
 //
-//  Window+TabsView.swift
+//  Tab+Header.swift
 //  Frontend
 //
 //  Created by Roman Kopaliani on 17.10.2023.
 //  Copyright © 2023 orion-assigment. All rights reserved.
 //
 
-extension Window {
+extension Tab {
 
-    struct TabsView {
+    struct Header {
     }
 }

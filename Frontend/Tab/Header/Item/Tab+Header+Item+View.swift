@@ -1,5 +1,5 @@
 //
-//  Windows+TabsView+Tab+View.swift
+//  Tab+Header+Item+View.swift
 //  Frontend
 //
 //  Created by Roman Kopaliani on 18.10.2023.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-extension Window.TabsView.Tab {
+extension Tab.Header.Item {
 
     struct View: SwiftUI.View {
 
@@ -74,19 +74,19 @@ extension Window.TabsView.Tab {
 
     } // View
 
-} // Window.TabsView.Tab
+} // Tab.Header.Item
 
 #if DEBUG
 
-struct Window_TabsView_Tab_Preview_Provider: PreviewProvider {
+struct Tab_Header_Item_Preview_Provider: PreviewProvider {
 
     static var previews: some SwiftUI.View {
 
         View(viewModel: staticContext.viewModel)
     }
 
-    private typealias View = Window.TabsView.Tab.View
-    private typealias ViewModel = Window.TabsView.Tab.ViewModel
+    private typealias View = Tab.Header.Item.View
+    private typealias ViewModel = Tab.Header.Item.ViewModel
 
     private final class Context: ObservableObject {
 
@@ -96,7 +96,7 @@ struct Window_TabsView_Tab_Preview_Provider: PreviewProvider {
 
             self.viewModel = ViewModel.Impl {
 
-                $0.title = "Facebook"
+                $0.title = "Apple"
                 $0.icon = Image(systemName: "apple.logo")
             }
         }
@@ -110,6 +110,6 @@ struct Window_TabsView_Tab_Preview_Provider: PreviewProvider {
         return .init()
     }()
 
-} // Controls_Alert_Preview_Provider
+} // Tab_Header_Item_Preview_Provider
 
 #endif

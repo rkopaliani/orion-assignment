@@ -70,6 +70,12 @@ extension Controls.WebView.View {
                 .weakAssign(to: \.canGoForward, on: viewModel)
                 .store(in: &cancellables)
 
+            webView.publisher(for: \.title)
+
+                .receive(on: scheduler)
+                .weakAssign(to: \.title, on: viewModel)
+                .store(in: &cancellables)
+
             super.init()
 
             viewModel.onGoBackAction = { [webView] in

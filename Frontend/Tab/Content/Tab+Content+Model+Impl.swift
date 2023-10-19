@@ -1,5 +1,5 @@
 //
-//  Tab+Model+Impl.swift
+//  Tab+Content+Model+Impl.swift
 //  Frontend
 //
 //  Created by script on 12.10.2023.
@@ -13,7 +13,7 @@ import Swinject
 
 private let logger = Logger(category: "Tab.Model")
 
-extension Tab.Model {
+extension Tab.Content.Model {
 
     struct Factory {
 

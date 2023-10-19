@@ -1,5 +1,5 @@
 //
-//  Window+TabsView+View.swift
+//  Tab+Header+View.swift
 //  Frontend
 //
 //  Created by Roman Kopaliani on 17.10.2023.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-extension Window.TabsView {
+extension Tab.Header {
 
     struct View: SwiftUI.View {
 
@@ -23,7 +23,8 @@ extension Window.TabsView {
                     Divider()
                         .padding(.init(top: 4, leading: 0, bottom: 4, trailing: 0))
 
-                    Window.TabsView.Tab.View(viewModel: $0)
+                    Tab.Header.Item.View(viewModel: $0)
+                        .frame(maxWidth: 200)
                 }
             }
 
@@ -31,13 +32,11 @@ extension Window.TabsView {
 
     } // View
 
-} // Window.TabsView
+} // Tab.Header
 
 #if DEBUG
 
-struct Window_TabsView_Preview_Provider: PreviewProvider {
-
-    typealias TabViewModel = Window.TabsView.Tab.ViewModel
+struct Tab_Header_Preview_Provider: PreviewProvider {
 
     static var previews: some SwiftUI.View {
 
@@ -45,8 +44,9 @@ struct Window_TabsView_Preview_Provider: PreviewProvider {
             .frame(height: 30)
     }
 
-    private typealias View = Window.TabsView.View
-    private typealias ViewModel = Window.TabsView.ViewModel
+    private typealias View = Tab.Header.View
+    private typealias ViewModel = Tab.Header.ViewModel
+    private typealias Item = Tab.Header.Item.ViewModel
 
     private final class Context: ObservableObject {
 
@@ -58,17 +58,17 @@ struct Window_TabsView_Preview_Provider: PreviewProvider {
 
                 $0.tabVMs = [
 
-                    TabViewModel.Impl {
+                    Item.Impl {
 
                         $0.icon = Image(systemName: "apple.logo")
                         $0.title = "Apple"
                     },
-                    TabViewModel.Impl {
+                    Item.Impl {
 
                         $0.icon = Image(systemName: "applepencil")
                         $0.title = "Pencil Apple"
                     },
-                    TabViewModel.Impl {
+                    Item.Impl {
 
                         $0.icon = nil
                         $0.title = "Football.ua"
@@ -86,6 +86,6 @@ struct Window_TabsView_Preview_Provider: PreviewProvider {
         return .init()
     }()
 
-} // Controls_Alert_Preview_Provider
+} // Tab_Header_Preview_Provider
 
 #endif

@@ -1,5 +1,5 @@
 //
-//  Tab+VM.swift
+//  Tab+Content+VM.swift
 //  Frontend
 //
 //  Created by script on 12.10.2023.
@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 
-extension Tab {
+extension Tab.Content {
 
     struct ViewModel {
 
@@ -18,6 +18,7 @@ extension Tab {
             let id = UUID()
 
             @Published var url: URL?
+            @Published var title: String?
 
             @Published var canGoBack = false
             @Published var canGoForward = false
@@ -46,7 +47,7 @@ extension Tab {
 
             // MARK: Equatable
 
-            static func == (lhs: Tab.ViewModel.Interface, rhs: Tab.ViewModel.Interface) -> Bool {
+            static func == (lhs: Tab.Content.ViewModel.Interface, rhs: Tab.Content.ViewModel.Interface) -> Bool {
 
                 lhs.id == rhs.id
             }

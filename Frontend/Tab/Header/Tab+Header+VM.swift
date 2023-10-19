@@ -1,27 +1,20 @@
 //
-//  Windows+TabsView+Tab+VM.swift
+//  Tab+Header+VM.swift
 //  Frontend
 //
-//  Created by Roman Kopaliani on 18.10.2023.
+//  Created by Roman Kopaliani on 17.10.2023.
 //  Copyright © 2023 orion-assigment. All rights reserved.
 //
 
 import Combine
-import SwiftUI
 
-extension Window.TabsView.Tab {
+extension Tab.Header {
 
     struct ViewModel {
 
-        class Interface: ObservableObject, Identifiable {
+        class Interface: ObservableObject {
 
-            let id = UUID()
-
-            @Published var icon: Image?
-
-            @Published var title: String = ""
-
-            var onCloseAction: (() -> Void)?
+            @Published var tabVMs: [Tab.Header.Item.ViewModel.Interface] = []
 
             init() {}
 
@@ -42,4 +35,4 @@ extension Window.TabsView.Tab {
 
     } // ViewModel
 
-} // Window.TabsView.Tab
+} // Tab.Header
