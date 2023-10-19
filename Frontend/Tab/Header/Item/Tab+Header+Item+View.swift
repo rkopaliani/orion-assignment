@@ -33,7 +33,7 @@ extension Tab.Header.Item {
 
                     } else {
 
-                        Button { viewModel.onCloseAction?() } label: {
+                        Button { viewModel.onCloseAction() } label: {
 
                             Image(systemName: "xmark.square.fill")
                                 .resizable()
@@ -69,6 +69,9 @@ extension Tab.Header.Item {
                 }
             })
             .onHover { isHovered = $0 }
+            .onTapGesture {
+                viewModel.onAction()
+            }
 
         } // body
 

@@ -7,7 +7,6 @@
 //
 
 import Combine
-import Foundation
 
 extension Window {
 
@@ -16,8 +15,8 @@ extension Window {
         class Interface: ObservableObject, Identifiable {
 
             @Published var tabsCountText: String = ""
+            @Published var tabsHeaderHidden = true
             @Published var selectedTabVM: Tab.Content.ViewModel.Interface
-            @Published var tabVMs: [Tab.Content.ViewModel.Interface] = []
 
             let tabsHeader: Tab.Header.ViewModel.Interface
             let goBackButton: Controls.Button.ViewModel.Interface

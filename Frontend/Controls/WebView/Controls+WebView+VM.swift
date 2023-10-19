@@ -18,7 +18,6 @@ extension Controls.WebView {
 
             @Published var url: URL?
             @Published var title: String?
-            @Published var estimatedProgress: Double = 0
 
             @Published var canGoBack = false
             @Published var canGoForward = false
@@ -26,6 +25,8 @@ extension Controls.WebView {
             var onLoadURL: ((URL) -> Void)?
             var onGoBackAction: (() -> Void)?
             var onGoForwardAction: (() -> Void)?
+
+            var coordinator: Controls.WebView.View.Coordinator?
 
             init() {
             }

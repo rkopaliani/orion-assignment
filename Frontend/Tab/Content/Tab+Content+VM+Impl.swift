@@ -58,13 +58,6 @@ extension Tab.Content.ViewModel {
                 .weakAssign(to: \.canGoForward, on: self)
                 .store(in: &cancellables)
 
-            webViewVM.$url
-
-                .removeDuplicates()
-                .receive(on: scheduler)
-                .weakAssign(to: \.url, on: self)
-                .store(in: &cancellables)
-
             webViewVM.$title
 
                 .removeDuplicates()
@@ -72,6 +65,18 @@ extension Tab.Content.ViewModel {
                 .weakAssign(to: \.title, on: self)
                 .store(in: &cancellables)
 
+            onGoBack = { [weak self] in
+
+                self?.webViewVM.onGoBackAction?()
+            }
+            onGoForward = { [weak self] in
+
+                self?.webViewVM.onGoForwardAction?()
+            }
+            onLoadUrl = { [weak self] url in
+
+                self?.loadUrl(url)
+            }
         }
 
         // MARK: - Privates
@@ -85,6 +90,21 @@ extension Tab.Content.ViewModel {
         private let model: Model.Interface
 
         private var cancellables = Set<AnyCancellable>()
+
+        private func loadUrl(_ url: URL) {
+
+            // should validate url and throw an error
+            guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+
+                return
+            }
+            components.scheme = components.scheme ?? "https"
+            guard let finalUrl = components.url else {
+
+                return
+            }
+            webViewVM.onLoadURL?(finalUrl)
+        }
 
     } // Impl
 

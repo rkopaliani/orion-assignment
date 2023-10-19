@@ -23,7 +23,7 @@ extension Tab.Content {
 
                 Controls.WebView.View(viewModel: viewModel.webViewVM)
 
-                if viewModel.url == nil {
+                if viewModel.webViewVM.url == nil {
 
                     LinearGradient(
 

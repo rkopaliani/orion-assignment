@@ -79,6 +79,7 @@ extension Window.ViewModel {
                     $0.isDisabled = true
                 },
                 preferencesButtonVM: Controls.Button.ViewModel.Impl {
+
                     $0.kind = .systemIcon
                     $0.icon = "gear"
                     $0.isDisabled = true
@@ -87,11 +88,11 @@ extension Window.ViewModel {
 
             goBackButton.action = { [weak self] in
 
-                self?.selectedTabVM.goBack()
+                self?.selectedTabVM.onGoBack()
             }
             goForwardButton.action = { [weak self] in
 
-                self?.selectedTabVM.goForward()
+                self?.selectedTabVM.onGoForward()
             }
             newPageButtonVM.action = { [weak self] in
 
@@ -103,7 +104,7 @@ extension Window.ViewModel {
 
                     return
                 }
-                self.selectedTabVM.loadUrl(url)
+                self.selectedTabVM.onLoadUrl(url)
             }
 
             $selectedTabVM
@@ -133,7 +134,7 @@ extension Window.ViewModel {
                         .weakAssign(to: \.isDisabled, on: self.goForwardButton)
                         .store(in: &self.tabCancellables)
 
-                    tabVM.$url
+                    tabVM.webViewVM.$url
 
                         .receive(on: self.scheduler)
                         .map { $0?.relativeString ?? "" }
@@ -152,15 +153,16 @@ extension Window.ViewModel {
             subject.tabs
 
                 .receive(on: scheduler)
-                .weakAssign(to: \.tabVMs, on: self)
+                .map { $0.count }
+                .map { "\($0) Tabs" }
+                .weakAssign(to: \.tabsCountText, on: self)
                 .store(in: &cancellables)
 
             subject.tabs
 
                 .receive(on: scheduler)
-                .map { $0.count }
-                .map { "\($0) Tabs" }
-                .weakAssign(to: \.tabsCountText, on: self)
+                .map { $0.count <= 1 }
+                .weakAssign(to: \.tabsHeaderHidden, on: self)
                 .store(in: &cancellables)
 
             // just creating empty tab
@@ -173,6 +175,7 @@ extension Window.ViewModel {
         private typealias Model = Window.Model
         private typealias TextIds = Window.Assets.TextIds
 
+        private typealias TabVM = Tab.Content.ViewModel
         private typealias TabItemVM = Tab.Header.Item.ViewModel
 
         private let resolver: Resolver
@@ -181,20 +184,20 @@ extension Window.ViewModel {
         private let model: Model.Interface
         private let subject = (
 
-            tabs: CurrentValueSubject<[Tab.Content.ViewModel.Interface], Never>([]),
+            tabs: CurrentValueSubject<[TabVM.Interface], Never>([]),
             ()
         )
 
         private var cancellables = Set<AnyCancellable>()
         private var tabCancellables = Set<AnyCancellable>()
 
-        private func createTab(item tabContent: Tab.Content.ViewModel.Interface) -> TabItemVM.Interface {
+        private func createTab(item contentViewModel: TabVM.Interface) -> TabItemVM.Interface {
 
-            let tabVM = TabItemVM.Impl {
+            let itemViewModel = TabItemVM.Impl {
 
                 $0.icon = nil
 
-                if let url = tabContent.url {
+                if let url = contentViewModel.webViewVM.url {
 
                     $0.title = url.host() ?? url.relativeString
 
@@ -204,28 +207,34 @@ extension Window.ViewModel {
                 }
             }
 
-            tabContent.$title
+            contentViewModel.$title
 
                 .receive(on: scheduler)
                 .unwrap()
                 .filter { !$0.isEmpty }
-                .weakAssign(to: \.title, on: tabVM)
+                .weakAssign(to: \.title, on: itemViewModel)
                 .store(in: &cancellables)
 
-            tabContent.$url
+            contentViewModel.webViewVM.$url
 
                 .unwrap()
                 .removeDuplicates()
-                .flatMap {
-                    self.model.websiteFavIcon(for: $0)
+                .flatMap { [weak self] in
+
+                    guard let self else {
+
+                        return Just<NSImage?>(nil).eraseToAnyPublisher()
+                    }
+
+                    return self.model.websiteFavIcon(for: $0)
                 }
                 .unwrap()
                 .map { Image(nsImage: $0) }
                 .receive(on: scheduler)
-                .weakAssign(to: \.icon, on: tabVM)
+                .weakAssign(to: \.icon, on: itemViewModel)
                 .store(in: &cancellables)
 
-            tabVM.onCloseAction = { [weak self] in
+            itemViewModel.onCloseAction = { [weak self] in
 
                 guard let self else {
 
@@ -233,11 +242,15 @@ extension Window.ViewModel {
                 }
 
                 var tabs = self.subject.tabs.value
-                tabs.removeAll { $0.id == tabContent.id }
+                tabs.removeAll { $0.id == contentViewModel.id }
                 subject.tabs.send(tabs)
             }
+            itemViewModel.onAction = { [weak self] in
 
-            return tabVM
+                self?.selectedTabVM = contentViewModel
+            }
+
+            return itemViewModel
         }
 
         private func openNewTab() {

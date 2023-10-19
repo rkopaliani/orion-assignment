@@ -21,7 +21,8 @@ extension Tab.Header.Item {
 
             @Published var title: String = ""
 
-            var onCloseAction: (() -> Void)?
+            var onAction: (() -> Void) = {}
+            var onCloseAction: (() -> Void) = {}
 
             init() {}
 

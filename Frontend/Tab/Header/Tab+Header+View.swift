@@ -24,7 +24,8 @@ extension Tab.Header {
                         .padding(.init(top: 4, leading: 0, bottom: 4, trailing: 0))
 
                     Tab.Header.Item.View(viewModel: $0)
-                        .frame(maxWidth: 200)
+
+                        .frame(minWidth: 32, maxWidth: 200)
                 }
             }
 

@@ -81,7 +81,10 @@ extension Window {
                     .cornerRadius(4)
                     .frame(minWidth: 300, idealWidth: 500)
 
-                    Tab.Header.View(viewModel: viewModel.tabsHeader)
+                    if !viewModel.tabsHeaderHidden {
+
+                        Tab.Header.View(viewModel: viewModel.tabsHeader)
+                    }
 
                     Spacer()
 

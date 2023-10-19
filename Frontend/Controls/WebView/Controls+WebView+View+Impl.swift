@@ -27,7 +27,14 @@ extension Controls.WebView.View {
 
         func makeCoordinator() -> Coordinator {
 
-            .init(viewModel: viewModel)
+            if let coordinator = viewModel.coordinator {
+
+                return coordinator
+            }
+
+            let coordinator = Coordinator(viewModel: viewModel)
+            viewModel.coordinator = coordinator
+            return coordinator
         }
 
         func makeNSView(context: Context) -> some NSView {
@@ -45,12 +52,6 @@ extension Controls.WebView.View {
         let webView = WKWebView()
 
         init(viewModel: ViewModel.Interface) {
-
-            webView.publisher(for: \.estimatedProgress)
-
-                .receive(on: scheduler)
-                .weakAssign(to: \.estimatedProgress, on: viewModel)
-                .store(in: &cancellables)
 
             webView.publisher(for: \.url)
 

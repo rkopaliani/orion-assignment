@@ -17,32 +17,20 @@ extension Tab.Content {
 
             let id = UUID()
 
-            @Published var url: URL?
             @Published var title: String?
 
             @Published var canGoBack = false
             @Published var canGoForward = false
+
+            var onGoBack: (() -> Void) = {}
+            var onGoForward: (() -> Void) = {}
+            var onLoadUrl: ((URL) -> Void) = { _ in }
 
             let webViewVM: Controls.WebView.ViewModel.Interface
 
             init(webViewVM: Controls.WebView.ViewModel.Interface) {
 
                 self.webViewVM = webViewVM
-            }
-
-            func loadUrl(_ url: URL) {
-
-                webViewVM.onLoadURL?(url)
-            }
-
-            func goBack() {
-
-                webViewVM.onGoBackAction?()
-            }
-
-            func goForward() {
-
-                webViewVM.onGoForwardAction?()
             }
 
             // MARK: Equatable
