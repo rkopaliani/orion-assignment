@@ -98,4 +98,5 @@ extension Controls.WebView.View {
         private let scheduler = DispatchQueue.main.asAnyScheduler()
         private var cancellables = Set<AnyCancellable>()
     }
-}
+
+} // Controls.WebView.View

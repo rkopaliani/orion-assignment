@@ -148,3 +148,21 @@ extension Publisher {
     }
 
 } // Publisher
+
+extension CurrentValueSubject where Output: RangeReplaceableCollection, Output.Element: Equatable {
+
+    func append(_ element: Output.Element) {
+
+        var value = self.value
+        value.append(element)
+        self.value = value
+    }
+
+    func remove(_ element: Output.Element) {
+
+        var value = self.value
+        value.removeAll { $0 == element }
+        self.value = value
+    }
+
+} // CurrentValueSubject
