@@ -27,7 +27,7 @@ extension Tab.Content {
 
                     LinearGradient(
 
-                        colors: [.gray, .blue],
+                        colors: [Color(nsColor: .systemGray), Color(nsColor: .systemBlue)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
@@ -35,6 +35,7 @@ extension Tab.Content {
                     Text("Empty Tab")
 
                         .font(.largeTitle)
+                        .foregroundColor(Color(nsColor: .textColor))
                 }
             }
 

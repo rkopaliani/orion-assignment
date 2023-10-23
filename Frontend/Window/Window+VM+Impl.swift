@@ -44,7 +44,6 @@ extension Window.ViewModel {
             super.init(
 
                 tabsHeader: Tab.Header.ViewModel.Impl { _ in },
-                selectedTabVM: resolver.resolve(Tab.Content.ViewModel.Interface.self)!,
                 goBackButton: Controls.Button.ViewModel.Impl {
 
                     $0.kind = .systemIcon
@@ -88,11 +87,11 @@ extension Window.ViewModel {
 
             goBackButton.action = { [weak self] in
 
-                self?.selectedTabVM.onGoBack()
+                self?.selectedTabContentVM?.onGoBack()
             }
             goForwardButton.action = { [weak self] in
 
-                self?.selectedTabVM.onGoForward()
+                self?.selectedTabContentVM?.onGoForward()
             }
             newPageButtonVM.action = { [weak self] in
 
@@ -104,13 +103,14 @@ extension Window.ViewModel {
 
                     return
                 }
-                self.selectedTabVM.onLoadUrl(url)
+                self.selectedTabContentVM?.onLoadUrl(url)
             }
 
-            $selectedTabVM
+            $selectedTabContentVM
 
                 .removeDuplicates()
                 .receive(on: scheduler)
+                .unwrap()
                 .sink { [weak self] tabVM in
 
                     guard let self else {
@@ -143,31 +143,26 @@ extension Window.ViewModel {
                 }
                 .store(in: &cancellables)
 
-            subject.tabs
+//            subject.tabs
+//
+//                .receive(on: scheduler)
+//                .flattenMap(transform: createTab(item:))
+//                .weakAssign(to: \.tabVMs, on: tabsHeader)
+//                .store(in: &cancellables)
 
-                .receive(on: scheduler)
-                .flattenMap(transform: createTab(item:))
-                .weakAssign(to: \.tabVMs, on: tabsHeader)
-                .store(in: &cancellables)
+            tabsHeader.$tabVMs
 
-            subject.tabs
-
+//            subject.tabs
+//
                 .receive(on: scheduler)
                 .map { $0.count }
                 .map { "\($0) Tabs" }
                 .weakAssign(to: \.tabsCountText, on: self)
                 .store(in: &cancellables)
 
-            subject.tabs
-
-                .receive(on: scheduler)
-                .map { $0.count <= 1 }
-                .weakAssign(to: \.tabsHeaderHidden, on: self)
-                .store(in: &cancellables)
-
             // just creating empty tab
             // no state restoration here
-            subject.tabs.send([selectedTabVM])
+            openNewTab()
         }
 
         // MARK: - Privates
@@ -182,12 +177,8 @@ extension Window.ViewModel {
         private let scheduler: AnyScheduler
 
         private let model: Model.Interface
-        private let subject = (
 
-            tabs: CurrentValueSubject<[TabVM.Interface], Never>([]),
-            ()
-        )
-
+        private var tabContentVMs: Set<TabVM.Interface> = Set()
         private var cancellables = Set<AnyCancellable>()
         private var tabCancellables = Set<AnyCancellable>()
 
@@ -206,6 +197,16 @@ extension Window.ViewModel {
                     $0.title = "Empty Tab"
                 }
             }
+
+            itemViewModel.$selected
+
+                .receive(on: scheduler)
+                .filter { $0 }
+                .sink { [weak self] _ in
+
+                    self?.selectedTabContentVM = contentViewModel
+                }
+                .store(in: &cancellables)
 
             contentViewModel.$title
 
@@ -234,20 +235,25 @@ extension Window.ViewModel {
                 .weakAssign(to: \.icon, on: itemViewModel)
                 .store(in: &cancellables)
 
-            itemViewModel.onCloseAction = { [weak self] in
+            itemViewModel.onCloseAction = { [weak self, itemViewModel] in
 
                 guard let self else {
 
                     return
                 }
 
-                var tabs = self.subject.tabs.value
-                tabs.removeAll { $0.id == contentViewModel.id }
-                subject.tabs.send(tabs)
+                self.tabContentVMs.remove(contentViewModel)
+                self.tabsHeader.tabVMs.removeAll { $0 == itemViewModel }
+                self.updateTabSelection()
             }
-            itemViewModel.onAction = { [weak self] in
+            itemViewModel.onAction = { [weak self, itemViewModel] in
 
-                self?.selectedTabVM = contentViewModel
+                guard let self else {
+
+                    return
+                }
+
+                self.updateTabSelection(with: itemViewModel)
             }
 
             return itemViewModel
@@ -255,13 +261,43 @@ extension Window.ViewModel {
 
         private func openNewTab() {
 
-            var tabs = subject.tabs.value
             let newTabVM = resolver.resolve(Tab.Content.ViewModel.Interface.self)!
-            tabs.append(newTabVM)
-            subject.tabs.send(tabs)
-            selectedTabVM = newTabVM
+            let tabItemVM = createTab(item: newTabVM)
+            tabsHeader.tabVMs.append(tabItemVM)
+            updateTabSelection()
+        }
+
+        private func updateTabSelection(with tabItem: TabItemVM.Interface? = nil) {
+
+            let tabItems = tabsHeader.tabVMs
+            guard let selectedTabItem = tabItem ?? tabItems.last else {
+                /// probably should close browser window here
+                return
+            }
+
+            for tabItem in tabItems {
+
+                tabItem.selected = tabItem == selectedTabItem
+            }
         }
 
     } // Impl
 
 } // Window.ViewModel
+
+extension CurrentValueSubject where Output: RangeReplaceableCollection, Output.Element: Equatable {
+
+    func append(_ element: Output.Element) {
+
+        var value = self.value
+        value.append(element)
+        self.value = value
+    }
+
+    func remove(_ element: Output.Element) {
+
+        var value = self.value
+        value.removeAll { $0 == element }
+        self.value = value
+    }
+}

@@ -24,14 +24,18 @@ extension Window {
 
             } detail: {
 
-                TabView(selection: $viewModel.selectedTabVM) {
+                TabView(selection: $viewModel.selectedTabContentVM) {
 
-                    Tab.Content.View(viewModel: viewModel.selectedTabVM)
+                    if let selectedTabContentVM = viewModel.selectedTabContentVM {
+
+                        Tab.Content.View(viewModel: selectedTabContentVM)
+                    }
                 }
                 // Padding and clipping hide standard macOS SwiftUI tabview ugliness.
                 // Better to replace it with custom tab view implementation.
                 .padding(EdgeInsets(top: -30, leading: -2, bottom: -2, trailing: -2))
                 .clipShape(Rectangle())
+                .animation(.easeIn(duration: 0.2), value: viewModel.selectedTabContentVM)
             }
             .navigationTitle("")
             .navigationSubtitle("")
@@ -81,13 +85,9 @@ extension Window {
                     .cornerRadius(4)
                     .frame(minWidth: 300, idealWidth: 500)
 
-                    if !viewModel.tabsHeaderHidden {
-
-                        Tab.Header.View(viewModel: viewModel.tabsHeader)
-                    }
+                    Tab.Header.View(viewModel: viewModel.tabsHeader)
 
                     Spacer()
-
                     HStack(spacing: 4) {
 
                         Controls.Button.View(viewModel: viewModel.newPageButtonVM)

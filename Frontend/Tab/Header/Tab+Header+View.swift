@@ -20,12 +20,7 @@ extension Tab.Header {
 
                 ForEach(viewModel.tabVMs) {
 
-                    Divider()
-                        .padding(.init(top: 4, leading: 0, bottom: 4, trailing: 0))
-
                     Tab.Header.Item.View(viewModel: $0)
-
-                        .frame(minWidth: 32, maxWidth: 200)
                 }
             }
 
@@ -42,6 +37,7 @@ struct Tab_Header_Preview_Provider: PreviewProvider {
     static var previews: some SwiftUI.View {
 
         View(viewModel: staticContext.viewModel)
+
             .frame(height: 30)
     }
 
@@ -68,6 +64,7 @@ struct Tab_Header_Preview_Provider: PreviewProvider {
 
                         $0.icon = Image(systemName: "applepencil")
                         $0.title = "Pencil Apple"
+                        $0.selected = true
                     },
                     Item.Impl {
 
