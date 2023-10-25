@@ -1,48 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "combineext",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:CombineCommunity/CombineExt.git",
-      "state" : {
-        "revision" : "d7b896fa9ca8b47fa7bcde6b43ef9b70bf8c1f56",
-        "version" : "1.8.1"
-      }
-    },
-    {
-      "identity" : "cwlcatchexception",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mattgallagher/CwlCatchException.git",
-      "state" : {
-        "revision" : "3b123999de19bf04905bc1dfdb76f817b0f2cc00",
-        "version" : "2.1.2"
-      }
-    },
-    {
-      "identity" : "cwlpreconditiontesting",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mattgallagher/CwlPreconditionTesting.git",
-      "state" : {
-        "revision" : "a23ded2c91df9156628a6996ab4f347526f17b6b",
-        "version" : "2.1.2"
-      }
-    },
-    {
       "identity" : "favicon",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/leonbreedt/FavIcon.git",
       "state" : {
         "revision" : "5bf16aad3ea543891eaef7e8da2aa2f6bb29e6e4",
         "version" : "3.1.0"
-      }
-    },
-    {
-      "identity" : "nimble",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Quick/Nimble.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "207c9dfb34c8f81783d3f5811f4f45dd7f910b52"
       }
     },
     {

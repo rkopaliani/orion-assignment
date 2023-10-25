@@ -25,7 +25,6 @@
 		5E8FDE852AD302FB003A69FC /* FrontendUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FDE842AD302FB003A69FC /* FrontendUITests.swift */; };
 		5E8FDE872AD302FB003A69FC /* FrontendUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FDE862AD302FB003A69FC /* FrontendUITestsLaunchTests.swift */; };
 		5E8FDE942AD3038C003A69FC /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5E8FDE932AD3038C003A69FC /* Swinject */; };
-		5E8FDE962AD3038C003A69FC /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 5E8FDE952AD3038C003A69FC /* CombineExt */; };
 		5E94C4712AD82A1D007017A9 /* Controls+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E94C46D2AD82A1D007017A9 /* Controls+Button.swift */; };
 		5E94C4722AD82A1D007017A9 /* Controls+Button+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E94C46E2AD82A1D007017A9 /* Controls+Button+Assets.swift */; };
 		5E94C4732AD82A1D007017A9 /* Controls+Button+VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E94C46F2AD82A1D007017A9 /* Controls+Button+VM.swift */; };
@@ -156,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E3A07172AE00DCB009381A5 /* FavIcon in Frameworks */,
-				5E8FDE962AD3038C003A69FC /* CombineExt in Frameworks */,
 				5E8FDE942AD3038C003A69FC /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,7 +421,6 @@
 			name = Frontend;
 			packageProductDependencies = (
 				5E8FDE932AD3038C003A69FC /* Swinject */,
-				5E8FDE952AD3038C003A69FC /* CombineExt */,
 				5E3A07162AE00DCB009381A5 /* FavIcon */,
 			);
 			productName = Frontend;
@@ -500,8 +497,6 @@
 			mainGroup = 5EA3BEA92AD2F059003A831D;
 			packageReferences = (
 				5EA3BEDA2AD2F34E003A831D /* XCRemoteSwiftPackageReference "Swinject" */,
-				5EA3BEDD2AD2F375003A831D /* XCRemoteSwiftPackageReference "CombineExt" */,
-				5EA3BEE02AD2F394003A831D /* XCRemoteSwiftPackageReference "Nimble" */,
 				5E3A07152AE00DCB009381A5 /* XCRemoteSwiftPackageReference "FavIcon" */,
 			);
 			productRefGroup = 5EA3BEB32AD2F059003A831D /* Products */;
@@ -968,22 +963,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		5EA3BEDD2AD2F375003A831D /* XCRemoteSwiftPackageReference "CombineExt" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:CombineCommunity/CombineExt.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		5EA3BEE02AD2F394003A831D /* XCRemoteSwiftPackageReference "Nimble" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Nimble.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -996,11 +975,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5EA3BEDA2AD2F34E003A831D /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
-		};
-		5E8FDE952AD3038C003A69FC /* CombineExt */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5EA3BEDD2AD2F375003A831D /* XCRemoteSwiftPackageReference "CombineExt" */;
-			productName = CombineExt;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
